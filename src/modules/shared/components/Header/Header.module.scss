@@ -3,7 +3,7 @@
 .header {
   height: $header-height;
   background: $color-white;
-  box-shadow: 0px 1px 0px $color-elements;
+  box-shadow: 0 1px 0 $color-elements;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -38,7 +38,7 @@
     display: flex;
     flex-grow: 1;
 
-    @include onMobile {
+    @include on-mobile {
       display: none;
     }
   }
@@ -47,7 +47,7 @@
   &__icons {
     display: flex;
 
-    @include onMobile {
+    @include on-mobile {
       display: none;
     }
   }
@@ -83,7 +83,7 @@
     display: none;
     transition: $transition;
 
-    @include onMobile {
+    @include on-mobile {
       display: block;
     }
 
@@ -95,10 +95,7 @@
   // Мобільне меню
   &__mobileMenu {
     position: fixed;
-    top: $header-height;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: $header-height 0 0 0; // Заміна top, left, right, bottom
     background: $color-white;
     z-index: 99;
     display: flex;
@@ -118,7 +115,7 @@
     border-top: 1px solid $color-elements;
     padding: 24px 0;
   }
-
+/* stylelint-disable no-descending-specificity */
   &__mobileIcon {
     color: $color-primary;
     transition: $transition;

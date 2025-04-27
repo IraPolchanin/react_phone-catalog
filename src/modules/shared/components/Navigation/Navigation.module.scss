@@ -4,11 +4,11 @@
   display: flex;
   gap: 64px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 32px;
   }
 
-  @include onMobile {
+  @include on-mobile {
     display: none;
 
     &__mobile {
@@ -41,7 +41,7 @@
     }
 
     // Мобільна адаптація
-    @include onMobile {
+    @include on-mobile {
       padding: 16px 0;
       text-align: center;
       border-bottom: none;
@@ -56,7 +56,7 @@
   &__mobile {
     display: none;
 
-    @include onMobile {
+    @include on-mobile {
       display: flex;
     }
   }

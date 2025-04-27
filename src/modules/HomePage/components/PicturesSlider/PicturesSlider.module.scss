@@ -1,10 +1,11 @@
 @use '../../../../styles/abstracts/abstracts' as *;
 
 .picturesSlider {
+  @extend %grid-system;
+
   position: relative;
   width: 100%;
   overflow: hidden;
-  @extend %grid-system;
   grid-template-rows: 400px 24px;
   row-gap: 16px;
 
@@ -95,7 +96,6 @@
     font-weight: 700;
     margin-bottom: 8px;
     color: #874bde;
-    margin-bottom: 8px;
     text-transform: uppercase;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 
@@ -187,14 +187,14 @@
       transform: scale(1.2);
     }
 
-    &:hover:not(&--active) {
-      background: $color-secondary;
-      transform: scale(1.1);
-    }
-
     &:focus {
       outline: none;
       box-shadow: 0 0 0 2px $color-primary;
+    }
+
+    &:hover:not(&--active) {
+      background: $color-secondary;
+      transform: scale(1.1);
     }
   }
 }

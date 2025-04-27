@@ -1,18 +1,18 @@
 @use './variables' as *;
 
-@mixin onTablet {
+@mixin on-tablet {
   @media (max-width: $breakpoint-tablet) {
     @content;
   }
 }
 
-@mixin onMobile {
+@mixin on-mobile {
   @media (max-width: $breakpoint-mobile) {
     @content;
   }
 }
 
-@mixin onLargeDesktop {
+@mixin on-large-desktop {
   @media (min-width: #{$breakpoint-tablet + 2}) {
     @content;
   }

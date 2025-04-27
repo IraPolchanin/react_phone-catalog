@@ -1,6 +1,6 @@
 $hover-bg: #e6e6e6;
 $disabled-bg: #f0f0f0;
-$disabled-color: #cccccc;
+$disabled-color: #ccc;
 
 .iconButton {
   width: 32px;
@@ -21,58 +21,6 @@ $disabled-color: #cccccc;
   &:disabled {
     background-color: $disabled-bg;
     cursor: not-allowed;
-
-    :global(.icon) {
-      filter: grayscale(100%);
-      opacity: 0.5;
-    }
   }
 
-  &--heart :global(.icon) {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>')
-      no-repeat center;
-  }
-
-  &--share :global(.icon) {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>')
-      no-repeat center;
-  }
-
-  &--plus :global(.icon) {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>')
-      no-repeat center;
-  }
-
-  &--minus :global(.icon) {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M19 13H5v-2h14v2z"/></svg>')
-      no-repeat center;
-  }
-
-  &--menu :global(.icon) {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>')
-      no-repeat center;
-  }
-
-  &--close :global(.icon) {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>')
-      no-repeat center;
-  }
 }

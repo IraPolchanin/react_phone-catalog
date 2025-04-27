@@ -15,6 +15,17 @@
   gap: 16px;
 }
 
+.imageWrapper {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  width: 100%;
+}
+
 .card {
   text-decoration: none;
   display: flex;
@@ -34,17 +45,6 @@
       transform: scale(1.1);
     }
   }
-}
-
-.imageWrapper {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  transition: transform 0.3s ease;
-  overflow: hidden;
-  width: 100%;
 }
 
 .image {

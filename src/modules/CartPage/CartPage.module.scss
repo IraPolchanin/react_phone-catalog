@@ -2,16 +2,18 @@
 
 .cartPage {
   @extend %container;
+
   padding: 40px 0 80px;
 
   .backLink {
     margin-bottom: 16px;
 
     a {
+      @extend %small-text;
+
       display: inline-flex;
       align-items: center;
       text-decoration: none;
-      @extend %small-text;
       color: #89939a;
 
       &:hover {
@@ -29,6 +31,7 @@
 
   .title {
     @extend %h1;
+
     margin-bottom: 32px;
   }
 

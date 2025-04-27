@@ -1,0 +1,79 @@
+@use '@/styles/abstracts/abstracts' as *;
+
+.navigation {
+  display: flex;
+  gap: 64px;
+
+  @include onTablet {
+    gap: 32px;
+  }
+
+  @include onMobile {
+    display: none;
+
+    &__mobile {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 0;
+    }
+  }
+
+  &__link {
+    color: $color-secondary;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: $fw-bold;
+    line-height: 92%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 25px 0;
+    border-bottom: solid 3px transparent;
+    transition: $transition;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &:active,
+    &.active {
+      color: $color-primary;
+      border-bottom: solid 3px $color-primary;
+    }
+
+    // Мобільна адаптація
+    @include onMobile {
+      padding: 16px 0;
+      text-align: center;
+      border-bottom: none;
+
+      &.active {
+        background: rgba($color-primary, 0.05);
+      }
+    }
+  }
+
+  // Мобільна навігація (прихована на десктопі)
+  &__mobile {
+    display: none;
+
+    @include onMobile {
+      display: flex;
+    }
+  }
+
+  &__mobile-link {
+    color: $color-secondary;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: $fw-bold;
+    letter-spacing: 0.04em;
+    padding: 16px 0;
+    text-align: center;
+    transition: $transition;
+
+    &:hover,
+    &.active {
+      color: $color-primary;
+    }
+  }
+}

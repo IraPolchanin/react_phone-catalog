@@ -1,0 +1,28 @@
+// Colors
+$color-primary: #313237; // Primary
+$color-secondary: #89939a; // Secondary
+$color-icons: #b4bdc3; // Icons
+$color-elements: #e2e6e9; // Elements
+$color-hover: #fafbfc; // Hover/BG
+$color-white: #ffffff; // White
+$color-green: #27ae60; // Green
+$color-red: #eb5757; // Red
+
+// Typography
+$font-main: 'Mont', sans-serif; // Main font
+$font-arial: Arial, sans-serif; // Default font from image
+
+// Font weights
+$fw-regular: 400;
+$fw-semibold: 600;
+$fw-bold: 800;
+
+// Breakpoints
+$breakpoint-tablet: 1199px;
+$breakpoint-mobile: 639px;
+
+// Other
+$transition: all 0.3s ease-in-out;
+$header-height: 64px;
+$footer-height: 96px;
+$container-padding: 0 0 80px;

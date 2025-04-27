@@ -1,0 +1,200 @@
+@use '../../../../styles/abstracts/abstracts' as *;
+
+.picturesSlider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  @extend %grid-system;
+  grid-template-rows: 400px 24px;
+  row-gap: 16px;
+
+  &__slideContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    grid-column: 2/-2;
+    grid-row: 1/2;
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    display: flex;
+    overflow: hidden;
+    padding: 16px;
+    background: $color-primary;
+    transition: $transition;
+
+    &--active {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  &__topText {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 2;
+    color: $color-white;
+  }
+
+  &__productName {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  &__tagline {
+    font-size: 14px;
+    font-weight: 500;
+    color: #89939a;
+    opacity: 0.8;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  &__imageWrapper {
+    width: 60%;
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    transform: translateY(30%) scale(1.3) rotate(15deg);
+
+    &--fallback {
+      object-fit: contain;
+      background: #f5f7fa;
+    }
+  }
+
+  &__content {
+    width: 40%;
+    padding: 0 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #874bde;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    &::after {
+      content: '👌';
+      margin-left: 8px;
+      font-size: 24px;
+      display: inline-block;
+    }
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    line-height: 1.2;
+    color: $color-white;
+  }
+
+  &__ctaButton {
+    background: transparent;
+    color: white;
+    border: solid 1px $color-white;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: fit-content;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #0077ed;
+      transform: scale(1.05);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.5);
+    }
+  }
+
+  &__arrowButton {
+    border: 1px solid #b4bdc4;
+    background: $color-white;
+    cursor: pointer;
+    transition: $transition;
+    grid-row: 1/2;
+    font-size: 16px;
+
+    &:first-of-type {
+      grid-column: 1/2;
+    }
+
+    &:last-of-type {
+      grid-column: -1/-2;
+    }
+
+    &:hover {
+      background-color: $color-elements;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__dots {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    justify-self: center;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    border: none;
+    background: $color-elements;
+    cursor: pointer;
+    transition: $transition;
+    padding: 0;
+
+    &--active {
+      background: $color-primary;
+      transform: scale(1.2);
+    }
+
+    &:hover:not(&--active) {
+      background: $color-secondary;
+      transform: scale(1.1);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-primary;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.favoritesLink {
+  text-decoration: none;
+  color: #313237;
+  transition: all 0.3s ease-in-out;
+  border-left: solid 1px #e2e6e9;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.favoriteIcon {
+  width: 15px;
+  height: 14px;
+  fill: transparent;
+  stroke: #313237;
+  stroke-width: 1.5;
+}
+
+.counter {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background-color: #eb5757;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+}

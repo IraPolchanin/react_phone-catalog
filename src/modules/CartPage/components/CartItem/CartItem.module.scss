@@ -1,0 +1,48 @@
+@use '../../../../styles/abstracts/abstracts' as *;
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.productImage {
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+}
+
+.productInfo {
+  flex: 1;
+}
+
+.productName {
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .quantity {
+    font-size: 16px;
+    min-width: 20px;
+    text-align: center;
+  }
+}
+
+.price {
+  font-size: 16px;
+  font-weight: bold;
+}

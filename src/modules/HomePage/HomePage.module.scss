@@ -1,0 +1,30 @@
+@use '../../styles/abstracts/abstracts' as *;
+
+.homePage__titleSection {
+  padding: 56px 0;
+  margin: 0 auto;
+  max-width: 1136px;
+}
+
+.homePage__title {
+  font-weight: $fw-bold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: $color-primary;
+}
+
+.homePage__titleHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.homePage__section {
+  @extend %container;
+}

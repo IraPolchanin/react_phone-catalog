@@ -1,0 +1,110 @@
+@use './mixins' as *;
+@use './variables' as *;
+
+%grid-system {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onMobile {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+  }
+}
+
+%container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: $container-padding;
+
+  @include onTablet {
+    max-width: 592px;
+  }
+
+  @include onMobile {
+    max-width: 288px;
+  }
+}
+
+%h1 {
+  margin: 0;
+  font-family: $font-main;
+  font-weight: $fw-bold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  @include onMobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+%h2 {
+  margin: 0;
+  font-family: $font-arial;
+  font-weight: $fw-bold;
+  font-size: 32px;
+  line-height: 41px;
+
+  @include onMobile {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+%h3 {
+  margin: 0;
+  font-family: $font-arial;
+  font-weight: $fw-semibold;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include onMobile {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+%h4 {
+  margin: 0;
+  font-family: $font-arial;
+  font-weight: $fw-semibold;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include onMobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+%uppercase {
+  text-transform: uppercase;
+  font-weight: $fw-bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+%buttons {
+  font-weight: $fw-semibold;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%body-text {
+  font-weight: $fw-regular;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%small-text {
+  font-weight: $fw-semibold;
+  font-size: 12px;
+  line-height: 15px;
+}

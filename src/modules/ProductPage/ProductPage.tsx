@@ -1,9 +1,12 @@
-import { useSearchParams, useParams, Navigate, Link } from 'react-router-dom';
+import { useSearchParams, useParams, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useProducts } from '../../contexts/ProductsContext';
+import classNames from 'classnames';
+
+import { useProducts } from '@/contexts/ProductsContext';
+import { Breadcrumbs } from '@/components/Breadcrumbs'; // Додаємо імпорт
+
 import { ProductList } from './components/ProductList';
 import styles from './ProductPage.module.scss';
-import classNames from 'classnames';
 
 const SORT_OPTIONS = {
   age: 'Newest',
@@ -25,8 +28,6 @@ export const ProductPage = () => {
     searchParams.get('perPage') === 'all'
       ? Infinity
       : +(searchParams.get('perPage') || 8);
-
-  // 🛠 Спочатку всі хуки викликаються без умов
 
   useEffect(() => {
     const hasProducts = products.some(p => p.category === category);
@@ -50,7 +51,6 @@ export const ProductPage = () => {
     setSortedProducts(sorted);
   }, [products, category, sort]);
 
-  // ✅ Тільки тепер умовний return
   if (!category || !['phones', 'tablets', 'accessories'].includes(category)) {
     return <Navigate to="/not-found" replace />;
   }
@@ -116,10 +116,8 @@ export const ProductPage = () => {
 
   return (
     <div className={styles.productPage}>
-      {/* Breadcrumb navigation */}
-      <div className={styles.breadcrumbs}>
-        <Link to="/">Home</Link> &gt; <span>{getCategoryTitle()}</span>
-      </div>
+      {/* Використовуємо компонент Breadcrumbs замість статичної розмітки */}
+      <Breadcrumbs />
 
       <h1 className={styles.title}>{getCategoryTitle()}</h1>
 

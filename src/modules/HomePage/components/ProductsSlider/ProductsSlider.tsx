@@ -1,7 +1,9 @@
 // src/modules/HomePage/components/ProductsSlider/ProductsSlider.tsx
 import { useState } from 'react';
-import { ProductCard } from '../../../shared/components/ProductCard';
-import { Product } from '../../../../types/Product';
+
+import { ProductCard } from '@/modules/shared/components/ProductCard';
+import { Product } from '@/types';
+
 import styles from './ProductsSlider.module.scss';
 
 type Props = {

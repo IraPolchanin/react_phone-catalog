@@ -1,13 +1,7 @@
 // src/contexts/FavoritesContext.tsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product } from '../types';
 
-type FavoritesContextType = {
-  favorites: Product[];
-  toggleFavorite: (product: Product) => void;
-  isFavorite: (productId: string | number) => boolean;
-  favoritesCount: number;
-};
+import { Product, FavoritesContextType } from '../types';
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(
   undefined,

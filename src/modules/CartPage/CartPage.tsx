@@ -1,9 +1,12 @@
 // src/modules/CartPage/CartPage.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../contexts/CartContext';
-import { CartItem } from './components/CartItem/CartItem';
-import { CartTotal } from './components/CartTotal/CartTotal';
+
+import { useCart } from '@/contexts/CartContext';
+import { Icon } from '@/components/Icon';
+
+import { CartItem } from './components/CartItem';
+import { CartTotal } from './components/CartTotal';
 import styles from './CartPage.module.scss';
 
 export const CartPage: React.FC = () => {
@@ -23,9 +26,14 @@ export const CartPage: React.FC = () => {
   return (
     <div className={styles.cartPage}>
       <div className={styles.backLink}>
-        <Link to="/">
-          <span className={styles.backIcon}>&lt;</span> Back
-        </Link>
+        <Icon
+          as="link"
+          to="/"
+          icon="arrow_left"
+          withText
+          text="Back"
+          ariaLabel="Back to previous page"
+        />
       </div>
 
       <h1 className={styles.title}>Cart</h1>

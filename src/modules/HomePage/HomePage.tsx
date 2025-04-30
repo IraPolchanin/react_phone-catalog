@@ -1,9 +1,11 @@
-import { useProducts } from '../../contexts/ProductsContext';
+import classNames from 'classnames';
+
+import { useProducts } from '@/contexts/ProductsContext';
+
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsSlider } from './components/ProductsSlider';
 import { CategorySection } from './components/CategorySection';
-import classNames from 'classnames';
 
 export const HomePage = () => {
   const { brandNewProducts, hotPricesProducts, loading } = useProducts();

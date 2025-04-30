@@ -1,24 +1,7 @@
 // src/contexts/CartContext.tsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product } from '../types/Product';
 
-// Define CartItem type
-export interface CartItem {
-  id: string | number; // Changed to match Product.id type
-  product: Product;
-  quantity: number;
-}
-
-interface CartContextType {
-  cartItems: CartItem[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (productId: string | number) => void; // Changed type
-  changeQuantity: (productId: string | number, quantity: number) => void; // Changed type
-  clearCart: () => void;
-  isInCart: (productId: string | number) => boolean; // Changed type
-  totalQuantity: number;
-  totalAmount: number;
-}
+import { Product, CartItem, CartContextType } from '../types';
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 

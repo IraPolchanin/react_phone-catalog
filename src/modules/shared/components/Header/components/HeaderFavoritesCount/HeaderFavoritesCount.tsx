@@ -1,22 +1,28 @@
-// src/modules/Header/components/HeaderFavoritesCount.tsx
+// src/modules/Header/components/HeaderFavoritesCount/HeaderFavoritesCount.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useFavorites } from '../../../../../../contexts/FavoritesContext';
-import styles from './HeaderFavoritesCount.module.scss';
 
-export const HeaderFavoritesCount: React.FC = () => {
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { Icon } from '@/components/Icon';
+
+interface HeaderFavoritesCountProps {
+  onClick?: () => void;
+}
+
+export const HeaderFavoritesCount: React.FC<HeaderFavoritesCountProps> = ({
+  onClick,
+}) => {
   const { favoritesCount } = useFavorites();
 
   return (
-    <Link to="/favorites" className={styles.favoritesLink}>
-      <img
-        src="/img/svg/icons/favourites.svg"
-        alt="Favorites"
-        className={styles.favoriteIcon}
-      />
-      {favoritesCount > 0 && (
-        <span className={styles.counter}>{favoritesCount}</span>
-      )}
-    </Link>
+    <Icon
+      as="link"
+      to="/favorites"
+      icon="favorites"
+      className="favoriteIconButton"
+      ariaLabel="Favorites"
+      showCounter={favoritesCount > 0}
+      count={favoritesCount}
+      onClick={onClick}
+    />
   );
 };

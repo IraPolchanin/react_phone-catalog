@@ -1,6 +1,7 @@
 // src/modules/FavoritesPage/components/FavoritesList.tsx
-import { useFavorites } from '../../../../contexts/FavoritesContext';
-import { ProductCard } from '../../../shared/components/ProductCard';
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { ProductCard } from '@/modules/shared/components/ProductCard';
+
 import styles from './FavoritesList.module.scss';
 
 export const FavoritesList = () => {

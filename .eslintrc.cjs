@@ -1,3 +1,4 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   env: {
     browser: true,
@@ -57,7 +58,7 @@ module.exports = {
       },
     ],
     'no-redeclare': [2, { builtinGlobals: true }],
-    'no-console': ['error', { allow: ['error'] }],
+    'no-console': ['error', { allow: ['error', 'warn'] }],
     'operator-linebreak': 0,
     'brace-style': [2, '1tbs'],
     'arrow-body-style': 0,
@@ -87,24 +88,18 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/state-in-constructor': [2, 'never'],
     'react-hooks/rules-of-hooks': 2,
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+
+    // Accessibility
     'jsx-a11y/label-has-associated-control': [
       'error',
       {
         assert: 'either',
+        depth: 3,
       },
     ],
-    'jsx-a11y/label-has-for': [
-      2,
-      {
-        components: ['Label'],
-        required: {
-          some: ['id', 'nesting'],
-        },
-        allowChildren: true,
-      },
-    ],
-    'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off',
+    'jsx-a11y/label-has-for': 'off',
 
     // Typescript
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -120,6 +115,26 @@ module.exports = {
         },
       },
     ],
+
+    // Import
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'import/no-unresolved': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+      },
+    ],
   },
   ignorePatterns: [
     'dist',
@@ -131,6 +146,17 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        paths: ['src'],
+        moduleDirectory: ['node_modules', 'src/'],
+      },
+      typescript: {
+        alwaysTryTypes: true,
+        project: './tsconfig.json',
+      },
     },
   },
 };

@@ -1,4 +1,4 @@
 export * from './Product';
-export * from './CartItem';
-export * from './CartState';
-export * from './FavoritesTypes';
+export * from './Cart';
+export * from './Favorites';
+export * from './Icon';

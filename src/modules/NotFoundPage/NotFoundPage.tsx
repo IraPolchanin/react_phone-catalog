@@ -1,5 +1,6 @@
 // src/modules/NotFoundPage/NotFoundPage.tsx
 import { Link } from 'react-router-dom';
+
 import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage = () => {

@@ -1,13 +1,14 @@
-// src/Root.tsx
+/* eslint-disable max-len */
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+
 import { App } from './App';
 import { HomePage } from './modules/HomePage/HomePage';
 import { ProductPage } from './modules/ProductPage/ProductPage';
-// import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from './modules/CartPage/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
-import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage'; // не забудь правильний імпорт
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const Root: React.FC = () => (
   <Routes>
@@ -18,7 +19,7 @@ export const Root: React.FC = () => (
       <Route path=":category" element={<ProductPage />} />
 
       {/* Product details page */}
-      {/* <Route path="product/:productId" element={<ProductDetailsPage />} /> */}
+      <Route path="product/:productId" element={<ProductDetailsPage />} />
 
       {/* Cart and favorites */}
       <Route path="favorites" element={<FavoritesPage />} />

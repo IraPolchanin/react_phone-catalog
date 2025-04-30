@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Product } from '../../../../types/Product';
-import { useProducts } from '../../../../contexts/ProductsContext';
+
+import { Product } from '@/types/Product';
+import { useProducts } from '@/contexts/ProductsContext';
+
 import styles from './PicturesSlider.module.scss';
 
 export const PicturesSlider = () => {

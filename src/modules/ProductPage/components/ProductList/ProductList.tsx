@@ -1,7 +1,9 @@
 // src/modules/ProductPage/components/ProductList/ProductList.tsx
 import React from 'react';
-import { ProductCard } from '../../../shared/components/ProductCard';
-import { Product } from '../../../../types/Product';
+
+import { ProductCard } from '@/modules/shared/components/ProductCard';
+import { Product } from '@/types';
+
 import styles from './ProductList.module.scss';
 
 interface Props {

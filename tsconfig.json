@@ -9,13 +9,15 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"],
-    "jsx": "react-jsx", // Включає нову JSX трансформацію
-    "baseUrl": "./src", // Для абсолютних імпортів
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./*"] // Псевдоніми для імпортів
+      "@/*": ["./*"]
     },
-    "esModuleInterop": true, // Краща сумісність з CommonJS
-    "skipLibCheck": true // Пропускає перевірку типів для node_modules
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "moduleResolution": "node"
   },
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,9 @@
-// src/modules/CartPage/components/CartTotal/CartTotal.tsx
 import React from 'react';
+
+import { Button } from '@/components/Button/Button';
+
 import { useCart } from '../../../../contexts/CartContext';
+
 import styles from './CartTotal.module.scss';
 
 interface CartTotalProps {
@@ -17,13 +20,9 @@ export const CartTotal: React.FC<CartTotalProps> = ({ onCheckout }) => {
       <p className={styles.itemsCount}>
         Total for {itemsCount} {itemsCount === 1 ? 'item' : 'items'}
       </p>
-      <button
-        type="button"
-        className={styles.checkoutButton}
-        onClick={onCheckout}
-      >
+      <Button variant="default" onClick={onCheckout} fullWidth>
         Checkout
-      </button>
+      </Button>
     </div>
   );
 };

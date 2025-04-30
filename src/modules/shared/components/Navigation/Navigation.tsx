@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
+
 import styles from './Navigation.module.scss';
 
 type NavigationProps = {

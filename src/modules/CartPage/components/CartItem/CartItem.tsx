@@ -1,8 +1,11 @@
+// src/components/CartItem/CartItem.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CartItem as CartItemType } from '../../../../contexts/CartContext';
-import { useCart } from '../../../../contexts/CartContext';
-import { IconButton } from '../../../../components/IconButton';
+
+import { useCart } from '@/contexts/CartContext';
+import { CartItem as CartItemType } from '@/types';
+import { Icon } from '@/components/Icon';
+
 import styles from './CartItem.module.scss';
 
 interface CartItemProps {
@@ -39,10 +42,12 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
   return (
     <div className={styles.cartItem}>
-      <IconButton
+      <Icon
+        as="button"
         icon="close"
         onClick={handleRemove}
-        aria-label={`Remove ${product.name} from cart`}
+        ariaLabel={`Remove ${product.name} from cart`}
+        type="button"
       />
 
       <div className={styles.productImage}>
@@ -66,17 +71,21 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
       </div>
 
       <div className={styles.quantityControls}>
-        <IconButton
+        <Icon
+          as="button"
           icon="minus"
           onClick={handleDecreaseQuantity}
           disabled={quantity <= 1}
-          aria-label="Decrease quantity"
+          ariaLabel="Decrease quantity"
+          type="button"
         />
         <span className={styles.quantity}>{quantity}</span>
-        <IconButton
+        <Icon
+          as="button"
           icon="plus"
           onClick={handleIncreaseQuantity}
-          aria-label="Increase quantity"
+          ariaLabel="Increase quantity"
+          type="button"
         />
       </div>
 

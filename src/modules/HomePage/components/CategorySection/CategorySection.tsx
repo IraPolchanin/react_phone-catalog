@@ -1,6 +1,8 @@
 // src/components/CategorySection/CategorySection.tsx
 import { Link } from 'react-router-dom';
-import { useProducts } from '../../../../contexts/ProductsContext';
+
+import { useProducts } from '@/contexts/ProductsContext';
+
 import styles from './CategorySection.module.scss';
 
 export const CategorySection = () => {

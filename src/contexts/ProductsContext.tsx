@@ -5,7 +5,9 @@ import React, {
   useState,
   useCallback,
 } from 'react';
+
 import { Product, ProductInList } from '../types';
+import { getProducts } from '../utils/api';
 
 type ProductsContextType = {
   products: Product[];
@@ -47,7 +49,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
     const fullPrice = item.priceRegular || item.fullPrice || price;
 
     return {
-      id: String(item.id), // Перетворюємо id на string
+      id: String(item.id),
       category: item.category,
       name: item.name,
       price,
@@ -58,6 +60,14 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
       ram: item.ram || 'N/A',
       year: item.year || 0,
       image: item.image || (item.images && item.images[0]) || '',
+
+      // 🔥 Додаємо ці поля, бо вони Є в JSON
+      colorsAvailable: item.colorsAvailable || [],
+      capacityAvailable: item.capacityAvailable || [],
+
+      images: item.images || [],
+      description: item.description || [],
+
       ...(item.category === 'accessories'
         ? {}
         : {
@@ -124,44 +134,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   const fetchProducts = useCallback(async (category?: string) => {
     try {
       setLoading(true);
-      let allData: ProductInList[] = [];
-
-      if (category) {
-        const endpoint = `api/${category}.json`;
-        const response = await fetch(endpoint);
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        allData = data.map((item: ProductInList) => ({
-          ...item,
-          category: item.category || category,
-        }));
-      } else {
-        const categoriesToFetch = ['phones', 'tablets', 'accessories'];
-
-        for (const cat of categoriesToFetch) {
-          const endpoint = `api/${cat}.json`;
-          const response = await fetch(endpoint);
-
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-          }
-
-          const data = await response.json();
-
-          allData = [
-            ...allData,
-            ...data.map((item: ProductInList) => ({
-              ...item,
-              category: item.category || cat,
-            })),
-          ];
-        }
-      }
+      const allData = await getProducts(category);
 
       setRawProducts(allData);
       setError(null);
@@ -200,9 +173,7 @@ export const useProducts = () => {
   const context = useContext(ProductsContext);
 
   if (!context) {
-    {
-      throw new Error('useProducts must be used within a ProductsProvider');
-    }
+    throw new Error('useProducts must be used within a ProductsProvider');
   }
 
   return context;

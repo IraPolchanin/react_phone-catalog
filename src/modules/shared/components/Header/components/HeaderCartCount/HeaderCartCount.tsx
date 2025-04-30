@@ -1,11 +1,11 @@
 // src/modules/Header/components/HeaderCartCount/HeaderCartCount.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useCart } from '../../../../../../contexts/CartContext';
-import styles from './HeaderCartCount.module.scss';
+
+import { useCart } from '@/contexts/CartContext';
+import { Icon } from '@/components/Icon';
 
 interface HeaderCartCountProps {
-  onClick?: () => void; // Optional onClick handler
+  onClick?: () => void;
 }
 
 export const HeaderCartCount: React.FC<HeaderCartCountProps> = ({
@@ -14,15 +14,15 @@ export const HeaderCartCount: React.FC<HeaderCartCountProps> = ({
   const { totalQuantity } = useCart();
 
   return (
-    <Link to="/cart" className={styles.cartLink} onClick={onClick}>
-      <img
-        src="/img/svg/icons/shopping_bag.svg"
-        alt="Cart"
-        className={styles.cartIcon}
-      />
-      {totalQuantity > 0 && (
-        <span className={styles.counter}>{totalQuantity}</span>
-      )}
-    </Link>
+    <Icon
+      as="link"
+      to="/cart"
+      icon="cart"
+      ariaLabel="Cart"
+      className="cartIconLink"
+      showCounter={totalQuantity > 0}
+      count={totalQuantity}
+      onClick={onClick}
+    />
   );
 };

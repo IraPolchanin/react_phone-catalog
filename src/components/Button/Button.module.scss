@@ -1,41 +1,30 @@
-$default-bg: #fff;
-$hover-bg: #e6e6e6;
-$selected-bg: #f00;
-$disabled-bg: #f0f0f0;
-$default-border: #000;
-$disabled-border: #ccc;
-$selected-color: #fff;
-$disabled-color: #ccc;
-
 .button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border: none;
+  background-color: #313237;
+  color: #fff;
 
-  &--default {
-    background-color: $default-bg;
-    border: 1px solid $default-border;
-    color: $default-border;
-  }
-
-  &--hover {
-    background-color: $hover-bg;
-    border: 1px solid $default-border;
-    color: $default-border;
+  &--hover:hover {
+    background-color: #89939a;
   }
 
   &--selected {
-    background-color: $selected-bg;
-    border: 1px solid $selected-bg;
-    color: $selected-color;
+    background-color: #eb5757;
   }
 
   &--disabled {
-    background-color: $disabled-bg;
-    border: 1px solid $disabled-border;
-    color: $disabled-color;
+    background-color: #e2e6e9;
+    color: #b4bdc3;
     cursor: not-allowed;
+  }
+
+  &--full {
+    width: 100%;
   }
 }

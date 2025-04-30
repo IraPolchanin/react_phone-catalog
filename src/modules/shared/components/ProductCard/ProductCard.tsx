@@ -1,10 +1,14 @@
-// src/modules/shared/components/ProductCard/ProductCard.tsx
+// src/components/ProductCard/ProductCard.tsx
 import { Link } from 'react-router-dom';
-import { Product } from '../../../../types/Product';
-import styles from './ProductCard.module.scss';
-import { useFavorites } from '../../../../contexts/FavoritesContext';
-import { useCart } from '../../../../contexts/CartContext';
 import classNames from 'classnames';
+
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { useCart } from '@/contexts/CartContext';
+import { Product } from '@/types/Product';
+import { Icon } from '@/components/Icon';
+import { Button } from '@/components/Button/Button';
+
+import styles from './ProductCard.module.scss';
 
 interface ProductCardProps {
   product: Product;
@@ -20,7 +24,6 @@ const getProductImagePath = (product: Product): string => {
     : `/${product.image.startsWith('img/') ? '' : 'img/'}${product.image}`;
 };
 
-// Generate link for product
 const getProductLink = (product: Product): string => {
   return `/product/${product.id}`;
 };
@@ -39,20 +42,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isProductFavorite = isFavorite(product.id);
   const isProductInCart = isInCart(product.id);
 
-  const handleToggleFavorite = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleToggleFavorite = () => {
     toggleFavorite(product);
   };
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!isProductInCart) {
       addToCart(product);
     }
   };
 
-  // Make sure product has a defined price
-  // If price is undefined, fallback to different price properties or set to 0
   const productPrice =
     product.price ??
     product.priceDiscount ??
@@ -95,14 +95,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               <span className={styles.specValue}>{product.screen}</span>
             </div>
           )}
-
           {product.capacity && (
             <div className={styles.specRow}>
               <span className={styles.specName}>Capacity</span>
               <span className={styles.specValue}>{product.capacity}</span>
             </div>
           )}
-
           {product.ram && (
             <div className={styles.specRow}>
               <span className={styles.specName}>RAM</span>
@@ -112,31 +110,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         <div className={styles.actions}>
-          <button
-            type="button"
-            className={classNames(styles.addToCartButton, {
-              [styles.addedToCartButton]: isProductInCart,
-            })}
-            aria-label={
-              isProductInCart
-                ? `${product.name} is in cart`
-                : `Add ${product.name} to cart`
-            }
+          <Button
+            variant={isProductInCart ? 'selected' : 'default'}
             onClick={handleAddToCart}
           >
             {isProductInCart ? 'Added to cart' : 'Add to cart'}
-          </button>
+          </Button>
 
-          <button
-            type="button"
+          <Icon
+            as="button"
+            icon={isProductFavorite ? 'heart' : 'favorites'}
             className={classNames(styles.favoriteButton, {
               [styles.favoriteActive]: isProductFavorite,
             })}
-            aria-label={`${isProductFavorite ? 'Remove' : 'Add'} ${product.name} ${isProductFavorite ? 'from' : 'to'} favorites`}
+            ariaLabel={`${isProductFavorite ? 'Remove' : 'Add'} ${product.name} ${isProductFavorite ? 'from' : 'to'} favorites`}
             onClick={handleToggleFavorite}
-          >
-            {isProductFavorite ? '❤️' : '♡'}
-          </button>
+            type="button"
+          />
         </div>
       </div>
     </div>

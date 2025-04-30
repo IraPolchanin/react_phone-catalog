@@ -1,0 +1,88 @@
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: $transition;
+  text-decoration: none;
+  color: $color-primary;
+
+  &--link {
+    border-left: solid 1px $color-elements;
+    padding: 24px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.icon.active {
+  color: $color-primary;
+  font-weight: bold;
+
+  &--link {
+    border-bottom: solid 2px $color-primary;
+  }
+}
+
+.counter {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 14px;
+  height: 14px;
+  background-color: $color-red;
+  color: $color-white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+
+  .icon--link & {
+    top: 30%;
+    right: 30%;
+  }
+}
+
+.withText {
+  gap: 8px;
+  padding: 8px 16px;
+
+  .text {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.iconMobile {
+  color: $color-primary;
+  transition: $transition;
+}
+
+/* Base styles for the icon image */
+.iconImage {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  transition: transform 0.2s ease;
+}
+
+/* More specific icon image modifiers */
+.icon:hover:not(:disabled) .iconImage {
+  transform: scale(1.1);
+}
+
+.icon:active:not(:disabled) .iconImage {
+  transform: scale(0.95);
+}

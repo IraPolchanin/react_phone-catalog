@@ -1,0 +1,13 @@
+@use '@/styles/abstracts/abstracts' as *;
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: $color-primary;
+  font-weight: 700;
+}
+
+.logoSvg {
+  height: 28px;
+}

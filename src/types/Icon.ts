@@ -17,6 +17,7 @@ export type IconType =
 
 export interface IconBaseProps {
   icon: IconType;
+  variant?: 'favorite' | 'link' | string;
   className?: string;
   ariaLabel?: string;
   showCounter?: boolean;
@@ -25,12 +26,12 @@ export interface IconBaseProps {
   text?: string;
   isActive?: boolean;
   isMobile?: boolean;
+  disabled?: boolean;
 }
 
 export interface IconButtonProps extends IconBaseProps {
   as?: 'button';
   onClick?: () => void;
-  disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
 }
 

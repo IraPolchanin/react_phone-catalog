@@ -12,7 +12,7 @@
 .thumbnail {
   width: 80px;
   height: 80px;
-  object-fit: cover;
+  object-fit: contain;
   border: 1px solid #e2e6e9;
   border-radius: 8px;
   cursor: pointer;
@@ -22,23 +22,29 @@
     border-color: #313237;
   }
 
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
   &.selected {
     border-color: #313237;
   }
 }
 
 .mainImage {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fafbfc;
-  border-radius: 8px;
+  flex: 1; // Keep this if the parent is flex, but consider removing if grid context causes issues
+
+  @extend %flex-center;
+
   overflow: hidden;
+  height: auto; // Allow height to adjust to content
+  max-height: 442px; // Example: Set a minimum height to prevent collapse
 
   img {
-    max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    width: auto; // Allow the image to size naturally
+    height: auto; // Allow the image to size naturally
   }
 }

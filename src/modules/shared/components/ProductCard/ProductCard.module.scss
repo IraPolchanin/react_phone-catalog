@@ -1,23 +1,24 @@
 .productCard {
-  border: 1px solid #e2e6e9;
-  border-radius: 8px;
-  padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
+  padding: 32px;
+  border: 1px solid $color-elements;
+  transition: $transition;
 
   &:hover {
-    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.1);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
   }
 }
 
 .imageContainer {
-  height: 200px;
+  height: 196px;
+  width: 208px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
-  transition: transform 0.3s ease;
+  margin-bottom: 8px;
+  transition: $transition;
+  overflow: hidden;
 
   &:hover {
     transform: scale(1.1);
@@ -37,49 +38,39 @@
 }
 
 .productName {
-  color: #313237;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-decoration: none;
+  color: $color-primary;
 
-  &:hover {
-    color: #89939a;
-  }
+  @extend %body-text;
+
+  margin-bottom: 8px;
+  text-decoration: none;
 }
 
 .priceContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .price {
-  font-size: 22px;
-  font-weight: 700;
-  color: #313237;
+  color: $color-primary;
   margin-right: 8px;
 }
 
 .fullPrice {
-  font-size: 22px;
-  font-weight: 500;
-  color: #89939a;
+  color: $color-secondary;
   text-decoration: line-through;
 }
 
 .specs {
-  margin-bottom: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #e2e6e9;
+  margin-bottom: 8px;
+  padding-top: 8px;
+  border-top: 1px solid $color-elements;
 }
 
 .specRow {
+  @extend %small-text;
+
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
@@ -90,65 +81,17 @@
 }
 
 .specName {
-  font-size: 12px;
-  color: #89939a;
+  color: $color-secondary;
 }
 
 .specValue {
-  font-size: 12px;
-  color: #313237;
+  color: $color-primary;
   text-align: right;
 }
 
 .actions {
   display: flex;
+  align-items: center;
   gap: 8px;
   margin-top: auto;
-}
-
-.addToCartButton {
-  flex-grow: 1;
-  height: 40px;
-  background-color: #313237;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #89939a;
-  }
-}
-
-.favoriteButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid #e2e6e9;
-  border-radius: 48px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-size: 20px;
-  color: #b4bdc3;
-
-  &:hover {
-    border-color: #89939a;
-    color: #0f0f11;
-  }
-
-  &.favoriteActive {
-    color: #eb5757;
-    border-color: #eb5757;
-
-    &:hover {
-      border-color: #d45252;
-      color: #d45252;
-    }
-  }
 }

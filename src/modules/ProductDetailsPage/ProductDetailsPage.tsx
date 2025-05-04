@@ -5,11 +5,11 @@ import classNames from 'classnames';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Loader } from '@/components/Loader';
 import { Button } from '@/components/Button';
-import { ProductCard } from '@/modules/shared/components/ProductCard';
 import { Product } from '@/types';
-import { getSuggestedProducts } from '@/utils/api';
 import { useProducts } from '@/contexts/ProductsContext';
+import { useCart } from '@/contexts/CartContext';
 import { Icon } from '@/components/Icon';
+import { SuggestedProducts } from '@/components/SuggestedProducts';
 
 import styles from './ProductDetailsPage.module.scss';
 import { ProductGallery } from './components/ProductGallery';
@@ -17,8 +17,8 @@ import { ProductGallery } from './components/ProductGallery';
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const { products, loading: productsLoading } = useProducts();
+  const { addToCart, isInCart } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>('');
@@ -40,51 +40,6 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [productId, products, productsLoading]);
 
-  useEffect(() => {
-    const fetchSuggested = async () => {
-      try {
-        const suggestions = await getSuggestedProducts();
-        const convertedSuggestions = suggestions.map(item => {
-          const price =
-            item.priceDiscount || item.price || item.priceRegular || 0;
-          const fullPrice = item.priceRegular || item.fullPrice || price;
-
-          return {
-            id: String(item.id),
-            category: item.category,
-            name: item.name,
-            price,
-            fullPrice,
-            color: item.color,
-            screen: item.screen || 'N/A',
-            capacity: item.capacity || 'N/A',
-            ram: item.ram || 'N/A',
-            year: item.year || 0,
-            image:
-              item.image ||
-              (item.images && item.images[0]) ||
-              '/img/fallback-image.webp',
-            ...(item.category === 'accessories'
-              ? {}
-              : {
-                  resolution: item.resolution || 'Unknown',
-                  processor: item.processor || 'Unknown',
-                  camera: item.camera || 'Unknown',
-                  zoom: item.zoom || 'N/A',
-                  cell: item.cell || [],
-                }),
-          } as Product;
-        });
-
-        setSuggestedProducts(convertedSuggestions.slice(0, 4));
-      } catch (err) {
-        console.error('Failed to load suggested products:', err);
-      }
-    };
-
-    fetchSuggested();
-  }, []);
-
   if (loading) {
     return <Loader />;
   }
@@ -93,21 +48,36 @@ export const ProductDetailsPage: React.FC = () => {
     return <div className={styles.error}>Product was not found</div>;
   }
 
+  const isProductInCart = isInCart(product.id);
+
+  const handleAddToCart = () => {
+    if (!isProductInCart && product) {
+      addToCart({
+        ...product,
+        color: selectedColor,
+        capacity: selectedCapacity,
+      });
+    }
+  };
+
   const categoryLink = `/${product.category.toLowerCase()}`;
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs
-        items={[
-          { label: 'Home', to: '/' },
-          { label: product.category, to: categoryLink },
-          { label: product.name, to: '' },
-        ]}
-      />
+      <div className={styles.breadcrumbs}>
+        <Breadcrumbs
+          items={[
+            { label: 'Home', to: '/' },
+            { label: product.category, to: categoryLink },
+            { label: product.name, to: '' },
+          ]}
+        />
+      </div>
 
       <div className={styles.backLink}>
         <Icon
           as="link"
+          variant="backLink"
           to="/"
           icon="arrow_left"
           withText
@@ -116,42 +86,50 @@ export const ProductDetailsPage: React.FC = () => {
         />
       </div>
 
-      <h1 className={styles.title}>{product.name}</h1>
+      <h1 className={styles.title} aria-label={`Details for ${product.name}`}>
+        {product.name}
+      </h1>
 
       <div className={styles.mainSection}>
-        <ProductGallery
-          images={
-            product.images && product.images.length > 0
-              ? product.images
-              : [product.image || '/img/fallback-image.webp'].filter(
-                  (img): img is string => !!img,
-                )
-          }
-        />
+        <div className={styles.productGalleryWrapper}>
+          <ProductGallery
+            images={
+              product.images && product.images.length > 0
+                ? product.images
+                : [product.image || '/img/fallback-image.webp'].filter(
+                    (img): img is string => !!img,
+                  )
+            }
+          />
+        </div>
 
         <div className={styles.details}>
           <div className={styles.colors}>
-            <h3 className={styles.colors__title}>Available colors</h3>
+            <h5 className={styles.colors__title}>Available colors</h5>
             {product.colorsAvailable && product.colorsAvailable.length > 0 ? (
               product.colorsAvailable.map(color => (
-                <>
-                  {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                  <label key={color} className={styles.colorOption}>
-                    <input
-                      type="radio"
-                      name="color"
-                      value={color}
-                      checked={selectedColor === color}
-                      onChange={() => setSelectedColor(color)}
-                    />
-                    <span
-                      className={classNames(styles.colorSwatch, {
-                        [styles.active]: selectedColor === color,
-                      })}
-                      style={{ backgroundColor: color }}
-                    />
-                  </label>
-                </>
+                // eslint-disable-next-line jsx-a11y/label-has-associated-control
+                <label
+                  key={color}
+                  htmlFor={`color-${color}`}
+                  className={styles.colorOption}
+                >
+                  <input
+                    type="radio"
+                    id={`color-${color}`}
+                    name="color"
+                    value={color}
+                    checked={selectedColor === color}
+                    onChange={() => setSelectedColor(color)}
+                    aria-checked={selectedColor === color}
+                  />
+                  <span
+                    className={classNames(styles.colorSwatch, {
+                      [styles.active]: selectedColor === color,
+                    })}
+                    style={{ backgroundColor: color }}
+                  />
+                </label>
               ))
             ) : (
               <p>No color options available</p>
@@ -159,24 +137,32 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div className={styles.capacities}>
-            <h3 className={styles.capacities__title}>Select capacity</h3>
+            <h5 className={styles.capacities__title}>Select capacity</h5>
             {product.capacityAvailable &&
             product.capacityAvailable.length > 0 ? (
               product.capacityAvailable.map(capacity => (
-                <div key={capacity} className={styles.capacityOption}>
-                  {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                  <label htmlFor={`capacity-${capacity}`}>
-                    <input
-                      type="radio"
-                      id={`capacity-${capacity}`}
-                      name="capacity"
-                      value={capacity}
-                      checked={selectedCapacity === capacity}
-                      onChange={() => setSelectedCapacity(capacity)}
-                    />
-                  </label>
-                  <span>{capacity}</span>
-                </div>
+                <label
+                  key={capacity}
+                  htmlFor={`capacity-${capacity}`}
+                  className={styles.capacityOption}
+                >
+                  <input
+                    type="radio"
+                    id={`capacity-${capacity}`}
+                    name="capacity"
+                    value={capacity}
+                    checked={selectedCapacity === capacity}
+                    onChange={() => setSelectedCapacity(capacity)}
+                    aria-checked={selectedCapacity === capacity}
+                  />
+                  <span
+                    className={classNames(styles.capacityValue, {
+                      [styles.active]: selectedCapacity === capacity,
+                    })}
+                  >
+                    {capacity}
+                  </span>
+                </label>
               ))
             ) : (
               <p>No capacity options available</p>
@@ -184,56 +170,74 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div className={styles.price}>
-            <span className={styles.currentPrice}>${product.price}</span>
+            <h2 className={styles.currentPrice}>${product.price}</h2>
             {product.fullPrice && product.price !== product.fullPrice && (
               <span className={styles.oldPrice}>${product.fullPrice}</span>
             )}
           </div>
 
-          <Button className={styles.addToCartButton}>Add to cart</Button>
+          <Button
+            variant={isProductInCart ? 'selected' : 'default'}
+            className={styles.addToCartButton}
+            fullWidth
+            onClick={handleAddToCart}
+            aria-label={
+              isProductInCart ? 'Item already in cart' : 'Add item to cart'
+            }
+          >
+            {isProductInCart ? 'Added to cart' : 'Add to cart'}
+          </Button>
         </div>
-      </div>
 
-      <div className={styles.about}>
-        <h2>About</h2>
-        {product.description && product.description.length > 0 ? (
-          product.description.map((desc, index) => (
-            <div key={index}>
-              <h3>{desc.title}</h3>
-              <p>{desc.text.join(' ')}</p>
-            </div>
-          ))
-        ) : (
-          <p>No description available</p>
-        )}
-      </div>
-
-      <div className={styles.techSpecs}>
-        <h2>Tech specs</h2>
-        <ul>
-          <li>Screen: {product.screen}</li>
-          {product.category !== 'accessories' && (
-            <>
-              <li>Resolution: {product.resolution || 'Unknown'}</li>
-              <li>Processor: {product.processor || 'Unknown'}</li>
-              <li>RAM: {product.ram || 'N/A'}</li>
-              <li>Built-in memory: {product.capacity || 'N/A'}</li>
-              <li>Camera: {product.camera || 'Unknown'}</li>
-              <li>Zoom: {product.zoom || 'N/A'}</li>
-              <li>Cell: {product.cell?.join(', ') || 'N/A'}</li>
-            </>
+        <div className={styles.about}>
+          <h3 className={styles.about__title}>About</h3>
+          {product.description && product.description.length > 0 ? (
+            product.description.map((desc, index) => (
+              <div key={index}>
+                <h4 className={styles.desc__title}>{desc.title}</h4>
+                <p className={styles.desc__text}>{desc.text.join(' ')}</p>
+              </div>
+            ))
+          ) : (
+            <p>No description available</p>
           )}
-        </ul>
-      </div>
+        </div>
 
-      <div className={styles.suggested}>
-        <h2>You may also like</h2>
-        <div className={styles.suggestedList}>
-          {suggestedProducts.map(suggestedProduct => (
-            <ProductCard key={suggestedProduct.id} product={suggestedProduct} />
-          ))}
+        <div className={styles.techSpecs}>
+          <h3 className={styles.techSpecs__title}>Tech specs</h3>
+          <ul className={styles.techSpecs__list}>
+            <li>
+              Screen: <span>{product.screen}</span>
+            </li>
+            {product.category !== 'accessories' && (
+              <>
+                <li>
+                  Resolution: <span>{product.resolution || 'Unknown'}</span>
+                </li>
+                <li>
+                  Processor: <span>{product.processor || 'Unknown'}</span>
+                </li>
+                <li>
+                  RAM: <span>{product.ram || 'N/A'}</span>
+                </li>
+                <li>
+                  Built-in memory: <span>{product.capacity || 'N/A'}</span>
+                </li>
+                <li>
+                  Camera: <span>{product.camera || 'Unknown'}</span>
+                </li>
+                <li>
+                  Zoom: <span>{product.zoom || 'N/A'}</span>
+                </li>
+                <li>
+                  Cell: <span>{product.cell?.join(', ') || 'N/A'}</span>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
       </div>
+      <SuggestedProducts />
     </div>
   );
 };

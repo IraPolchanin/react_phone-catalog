@@ -1,9 +1,8 @@
-// src/modules/Header/Header.tsx
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
 import { Icon } from '@/components/Icon';
+import { Logo } from '@/components/Logo';
 
 import { Navigation } from '../Navigation';
 
@@ -47,17 +46,14 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <Link to="/" className={styles.header__logo}>
-          <img
-            src="/img/svg/logo.svg"
-            alt="Nice Gadgets"
-            className={styles.header__logoSvg}
-          />
-        </Link>
+        <Logo
+          to="/"
+          src="/img/svg/logo.svg"
+          alt="Nice Gadgets"
+          className={styles.header__logo}
+        />
 
-        <div className={styles.header__nav}>
-          <Navigation />
-        </div>
+        <Navigation />
 
         <div className={styles.header__icons}>
           <HeaderFavoritesCount />

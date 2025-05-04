@@ -89,7 +89,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
         />
       </div>
 
-      <div className={styles.price}>${totalItemPrice.toFixed(2)}</div>
+      <h3 className={styles.price}>${totalItemPrice.toFixed(2)}</h3>
     </div>
   );
 };

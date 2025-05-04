@@ -1,3 +1,5 @@
+// src/modules/Navigation/Navigation.tsx
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
@@ -13,16 +15,26 @@ export const Navigation: React.FC<NavigationProps> = ({
   isMobile = false,
   onLinkClick,
 }) => {
-  const baseStyle =
-    styles[isMobile ? 'navigation__mobile-link' : 'navigation__link'];
+  const navClass = clsx(
+    styles.navigation,
+    isMobile && styles['navigation--mobile'],
+  );
 
-  const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
-    clsx(baseStyle, isActive && styles.active);
+  const getLinkClassName = ({ isActive }: { isActive: boolean }) => {
+    if (isMobile) {
+      return clsx(
+        styles.navigation__linkMobile,
+        isActive && styles.activeMobile,
+      );
+    }
+
+    return clsx(styles.navigation__link, isActive && styles.active);
+  };
 
   const handleClick = () => onLinkClick?.();
 
   return (
-    <nav className={isMobile ? styles.navigation__mobile : styles.navigation}>
+    <nav className={navClass}>
       <NavLink to="/" className={getLinkClassName} onClick={handleClick}>
         HOME
       </NavLink>

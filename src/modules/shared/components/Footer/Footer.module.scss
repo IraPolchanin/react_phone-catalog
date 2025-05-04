@@ -1,66 +1,27 @@
 @use '@/styles/abstracts/abstracts' as *;
 
 .footer {
-  background-color: $color-primary;
-  color: $color-white;
-  padding: 32px 0;
-  margin-top: 40px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
+  height: $footer-height;
+  background: $color-white;
+  box-shadow: 0 -1px 0 $color-elements;
+  position: relative;
+  width: 100%;
+  padding: 32px 24px; // Combine padding: 32px 0 (vertical) with padding: 0 24px (horizontal)
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-}
+  margin: 0 auto;
 
-.logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: $color-white;
-  text-decoration: none;
-  transition: opacity 0.3s;
-
-  &:hover {
-    opacity: 0.8;
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
   }
 }
 
-.links {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
+.footer__logo {
+  padding: 0 48px 0 24px;
 
-.link {
-  color: $color-white;
-  text-decoration: none;
-  transition: opacity 0.3s;
-
-  &:hover {
-    opacity: 0.8;
-    text-decoration: underline;
+  img {
+    height: 32px;
   }
-}
-
-.backButton {
-  background: none;
-  border: none;
-  color: $color-white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  transition: opacity 0.3s;
-
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-.arrow {
-  font-size: 20px;
 }

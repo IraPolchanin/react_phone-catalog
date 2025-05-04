@@ -1,6 +1,5 @@
-@use '@/styles/abstracts/abstracts' as *;
-
 .header {
+  // Main header layout
   height: $header-height;
   background: $color-white;
   box-shadow: 0 1px 0 $color-elements;
@@ -22,58 +21,27 @@
 
   &__logo {
     padding: 0 48px 0 24px;
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    text-decoration: none;
-    color: $color-primary;
-
-    img {
-      height: 28px;
-    }
   }
 
-  // Навігація (прихована на мобільних)
-  &__nav {
-    display: flex;
-    flex-grow: 1;
-
-    @include on-mobile {
-      display: none;
-    }
-  }
-
-  // Іконки (приховані на мобільних)
+  // Header icons (favorites, cart)
   &__icons {
     display: flex;
 
-    @include on-mobile {
-      display: none;
-    }
-  }
+    a {
+      padding: 24px;
+      border-left: solid 1px $color-elements;
 
-  &__icon {
-    color: $color-primary;
-    transition: $transition;
-    padding: 24px;
-    border-left: solid 1px $color-elements;
-
-    svg {
-      fill: transparent;
-      stroke: currentColor;
-      stroke-width: 1.5;
-    }
-
-    &:hover {
-      transform: scale(1.1);
-
-      svg {
-        fill: rgba($color-primary, 0.1);
+      &:hover:not(:disabled) {
+        border-color: $color-elements;
       }
     }
+
+    @include on-mobile {
+      display: none; // Hide desktop icons on mobile
+    }
   }
 
-  // Бургер-меню (тільки на мобільних)
+  // Burger menu button (only on mobile)
   &__burger {
     background: none;
     border: none;
@@ -92,10 +60,10 @@
     }
   }
 
-  // Мобільне меню
+  // Mobile menu container and animation
   &__mobileMenu {
     position: fixed;
-    inset: $header-height 0 0 0; // Заміна top, left, right, bottom
+    inset: $header-height 0 0 0;
     background: $color-white;
     z-index: 99;
     display: flex;
@@ -109,13 +77,15 @@
     }
   }
 
+  // Mobile footer with icons
   &__mobileFooter {
     display: flex;
     justify-content: space-around;
     border-top: 1px solid $color-elements;
     padding: 24px 0;
   }
-/* stylelint-disable no-descending-specificity */
+
+  // Icon styling for mobile footer
   &__mobileIcon {
     color: $color-primary;
     transition: $transition;

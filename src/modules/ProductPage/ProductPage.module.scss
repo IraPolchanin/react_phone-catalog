@@ -1,72 +1,128 @@
 .productPage {
-  padding: 24px;
-}
+  @extend %container;
 
-.title {
-  font-size: 32px;
-  margin-bottom: 24px;
-}
-
-.controls {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-  gap: 8px;
-}
-
-.pageButton {
-  padding: 8px 12px;
-  border: none;
-  background-color: #eee;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-
-  &.active {
-    background-color: #000;
-    color: #fff;
+  .breadcrumbs {
+    margin-bottom: 40px;
   }
-}
 
-.error {
-  color: red;
-}
+  .title {
+    margin-bottom: 24px;
+  }
 
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-  font-size: 14px;
-  color: #89939a;
+  .productCount {
+    @extend %body-text;
 
-  a {
-    color: #89939a;
-    text-decoration: none;
-    transition: color 0.2s;
+    color: $color-secondary;
+    margin-bottom: 40px;
+  }
+
+  .controls {
+    @extend %grid-system;
+
+    margin-bottom: 24px;
+  }
+
+  .controlGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .sort-filter {
+    grid-column: 1/5;
+  }
+
+  .per-page-filter {
+    grid-column: 5/8;
+  }
+
+  .controlLabel {
+    @extend %small-text;
+
+    color: $color-secondary;
+    margin-bottom: 4px;
+  }
+/* stylelint-disable selector-pseudo-element-no-unknown */
+  .select {
+    appearance: base-select;
+    padding: 10px 12px 9px;
+
+    @extend %buttons;
+
+    border: 1px solid $color-icons;
+    border-radius: 0;
+    background-color: transparent;
+    color: $color-primary;
+
+    &::picker-icon {
+      appearance: base-select;
+      content: "";
+      background-image: url('/img/svg/icons/arrow_down.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+    }
+
+    &::picker(select) {
+      margin-top: 4px;
+      appearance: base-select;
+      background-color: #fff;
+      color: $color-secondary;
+      border: 1px solid $color-elements;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 14px;
+      z-index: 100;
+    }
 
     &:hover {
-      color: #0f0f11;
+      border-color: $color-secondary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+
+    &:disabled {
+      background-color: $color-hover;
+      color: $color-icons;
+      border-color: $color-hover;
+      cursor: not-allowed;
+    }
+
+    & option {
+      @extend %body-text;
+
+      padding: 0 6px;
+      color: $color-secondary;
+      transition: $transition;
+      background-color: $color-white;
+      cursor: pointer;
+
+      &::checkmark {
+        content: "";
+      }
+
+      &:checked {
+        color: $color-primary;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
-
-  span {
-    color: #89939a;
+/* stylelint-enable selector-pseudo-element-no-unknown */
+  .productListWrapper {
+    margin-bottom: 40px;
   }
 
-  & > * {
-    margin-right: 8px;
+  .noProducts {
+    text-align: center;
+    color: #666;
   }
-}
-
-.productCount {
-  margin-top: 4px;
-  margin-bottom: 24px;
-  font-size: 14px;
-  color: #89939a;
 }

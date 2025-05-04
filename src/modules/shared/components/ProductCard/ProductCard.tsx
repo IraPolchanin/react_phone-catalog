@@ -1,10 +1,9 @@
 // src/components/ProductCard/ProductCard.tsx
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
 
+import { Product } from '@/types/Product';
 import { useFavorites } from '@/contexts/FavoritesContext';
 import { useCart } from '@/contexts/CartContext';
-import { Product } from '@/types/Product';
 import { Icon } from '@/components/Icon';
 import { Button } from '@/components/Button/Button';
 
@@ -82,9 +81,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </Link>
 
         <div className={styles.priceContainer}>
-          <span className={styles.price}>${productPrice}</span>
+          <h3 className={styles.price}>${productPrice}</h3>
           {shouldShowFullPrice(product) && (
-            <span className={styles.fullPrice}>${product.fullPrice}</span>
+            <h3 className={styles.fullPrice}>${product.fullPrice}</h3>
           )}
         </div>
 
@@ -113,16 +112,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Button
             variant={isProductInCart ? 'selected' : 'default'}
             onClick={handleAddToCart}
+            stretch // Додаємо проп stretch
           >
-            {isProductInCart ? 'Added to cart' : 'Add to cart'}
+            {isProductInCart ? 'Added' : 'Add to cart'}
           </Button>
 
           <Icon
             as="button"
             icon={isProductFavorite ? 'heart' : 'favorites'}
-            className={classNames(styles.favoriteButton, {
-              [styles.favoriteActive]: isProductFavorite,
-            })}
+            variant="favorite" // Use the new variant prop
+            isActive={isProductFavorite} // Use isActive to toggle the active state
             ariaLabel={`${isProductFavorite ? 'Remove' : 'Add'} ${product.name} ${isProductFavorite ? 'from' : 'to'} favorites`}
             onClick={handleToggleFavorite}
             type="button"

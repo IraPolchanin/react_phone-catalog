@@ -1,9 +1,7 @@
-@use '../../styles/abstracts/abstracts' as *;
+.homePage__section {
+  @extend %container;
 
-.homePage__titleSection {
-  padding: 56px 0;
-  margin: 0 auto;
-  max-width: 1136px;
+  padding-top: 56px;
 }
 
 .homePage__title {
@@ -23,8 +21,4 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
-
-.homePage__section {
-  @extend %container;
 }

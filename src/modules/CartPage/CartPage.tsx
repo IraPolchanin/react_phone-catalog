@@ -1,9 +1,10 @@
 // src/modules/CartPage/CartPage.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useCart } from '@/contexts/CartContext';
 import { Icon } from '@/components/Icon';
+import { Button } from '@/components/Button'; // Import Button
 
 import { CartItem } from './components/CartItem';
 import { CartTotal } from './components/CartTotal';
@@ -12,6 +13,7 @@ import styles from './CartPage.module.scss';
 export const CartPage: React.FC = () => {
   const { cartItems, clearCart } = useCart();
   const isEmpty = cartItems.length === 0;
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleCheckout = () => {
     const userConfirmed = window.confirm(
@@ -23,11 +25,16 @@ export const CartPage: React.FC = () => {
     }
   };
 
+  const handleContinueShopping = () => {
+    navigate('/'); // Navigate to home page
+  };
+
   return (
     <div className={styles.cartPage}>
       <div className={styles.backLink}>
         <Icon
           as="link"
+          variant="backLink"
           to="/"
           icon="arrow_left"
           withText
@@ -41,9 +48,13 @@ export const CartPage: React.FC = () => {
       {isEmpty ? (
         <div className={styles.emptyCart}>
           <p>Your cart is empty</p>
-          <Link to="/" className={styles.continueShoppingLink}>
+          <Button
+            variant="default" // Choose an appropriate variant (e.g., 'default' or 'hover')
+            onClick={handleContinueShopping}
+            className={styles.continueShoppingLink} // Apply existing styling
+          >
             Continue Shopping
-          </Link>
+          </Button>
         </div>
       ) : (
         <div className={styles.cartContent}>

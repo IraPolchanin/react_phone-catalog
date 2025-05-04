@@ -9,50 +9,9 @@
   margin-bottom: 24px;
 }
 
-.title {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0;
-  color: #313237;
-}
-
 .controls {
   display: flex;
   gap: 16px;
-}
-
-.controlButton {
-  width: 32px;
-  height: 32px;
-  border: 1px solid #b4bdc4;
-  border-radius: 50%;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    border-color: #313237;
-    background-color: #f5f5f7;
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-
-    &:hover {
-      border-color: #b4bdc4;
-      background-color: transparent;
-    }
-  }
-}
-
-.arrow {
-  font-size: 16px;
-  line-height: 1;
-  color: #313237;
 }
 
 .productsContainer {

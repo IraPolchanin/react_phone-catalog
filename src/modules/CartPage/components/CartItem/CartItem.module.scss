@@ -1,11 +1,9 @@
-@use '../../../../styles/abstracts/abstracts' as *;
-
 .cartItem {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px;
-  border-bottom: 1px solid #e0e0e0;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid $color-elements;
 }
 
 .productImage {
@@ -21,8 +19,9 @@
 }
 
 .productName {
-  font-size: 16px;
-  color: #000;
+  @extend %body-text;
+
+  color: $color-primary;
   text-decoration: none;
 
   &:hover {
@@ -36,13 +35,13 @@
   gap: 10px;
 
   .quantity {
-    font-size: 16px;
-    min-width: 20px;
+    @extend %body-text;
+
+    color: $color-primary;
     text-align: center;
   }
 }
 
 .price {
-  font-size: 16px;
-  font-weight: bold;
+  color: $color-primary;
 }

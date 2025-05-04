@@ -1,9 +1,9 @@
-@use '@/styles/abstracts/abstracts' as *;
-
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: $container-padding;
+  @extend %container;
+}
+
+.breadcrumbs {
+  margin-bottom: 40px;
 }
 
 .error {
@@ -12,43 +12,30 @@
   margin: 50px 0;
 }
 
-.backButton {
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-size: 14px;
-  color: $color-secondary;
-
-  &:hover {
-    color: $color-primary;
-  }
+.backLink {
+  margin-bottom: 16px;
 }
 
 .title {
-  font-family: $font-main;
-  font-size: 32px;
-  font-weight: $fw-bold;
-  margin: 16px 0 40px;
+  margin-bottom: 40px;
   color: $color-primary;
 }
 
 .mainSection {
-  display: flex;
-  gap: 64px;
-  margin-bottom: 80px;
+  @extend %grid-system;
 
-  @media (max-width: $breakpoint-mobile) {
-    flex-direction: column;
-  }
+  grid-template-rows: auto auto;
+  row-gap: 80px;
+}
+
+.productGalleryWrapper {
+  grid-column: 1/13;
+  grid-row: 1/2;
 }
 
 .details {
-  flex: 1;
+  grid-column: 14/20;
+  grid-row: 1/2;
   max-width: 320px;
 
   .colorOption {
@@ -90,10 +77,9 @@
     padding-bottom: 24px;
     border-bottom: 1px solid $color-elements;
 
-    &__title{
-      font-family: $font-main;
-      font-size: 12px;
-      font-weight: $fw-semibold;
+    &__title {
+      @extend %small-text;
+
       margin-bottom: 8px;
       color: $color-secondary;
     }
@@ -105,9 +91,8 @@
     border-bottom: 1px solid $color-elements;
 
     &__title {
-      font-family: $font-main;
-      font-size: 12px;
-      font-weight: $fw-semibold;
+      @extend %small-text;
+
       margin-bottom: 8px;
       color: $color-secondary;
     }
@@ -115,24 +100,26 @@
     .capacityOption {
       display: inline-block;
       margin-right: 8px;
+      cursor: pointer;
 
       input {
         display: none;
       }
 
-      span {
+      .capacityValue {
         display: inline-block;
         padding: 8px;
         border: 1px solid $color-icons;
         border-radius: 4px;
-        font-family: $font-main;
-        font-size: 14px;
+
+        @extend %body-text;
+
         color: $color-primary;
         cursor: pointer;
         transition: $transition;
       }
 
-      input:checked~span {
+      .active {
         background-color: $color-primary;
         color: $color-white;
         border-color: $color-primary;
@@ -147,9 +134,6 @@
     gap: 8px;
 
     .currentPrice {
-      font-family: $font-main;
-      font-size: 32px;
-      font-weight: $fw-bold;
       color: $color-primary;
     }
 
@@ -158,73 +142,53 @@
       font-size: 22px;
       text-decoration: line-through;
       color: $color-secondary;
-    }
-  }
-
-  .addToCartButton {
-    width: 100%;
-    padding: 14px 0;
-    background-color: $color-primary;
-    color: $color-white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: $font-main;
-    font-size: 14px;
-    font-weight: $fw-semibold;
-    transition: $transition;
-
-    &:hover {
-      background-color: $color-primary;
-      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      font-weight: 500;
+      line-height: 28px;
     }
   }
 }
 
 .about {
+  grid-column: 1/13;
+  grid-row: 2/3;
   margin-bottom: 56px;
 
-  h2 {
-    font-family: $font-main;
-    font-size: 22px;
-    font-weight: $fw-bold;
-    margin-bottom: 16px;
-    color: $color-primary;
+  &__title {
+    margin-bottom: 32px;
     padding-bottom: 16px;
     border-bottom: 1px solid $color-elements;
-  }
-
-  h3 {
-    font-family: $font-main;
-    font-size: 20px;
-    font-weight: $fw-semibold;
-    margin: 32px 0 16px;
     color: $color-primary;
   }
 
-  p {
-    font-family: $font-main;
-    font-size: 14px;
-    line-height: 1.5;
-    color: $color-secondary;
+  .desc__title {
     margin-bottom: 16px;
+    color: $color-primary;
+  }
+
+  .desc__text {
+    @extend %body-text;
+
+    color: $color-secondary;
+    margin-bottom: 32px;
+  }
+
+  >div:last-child .desc__text {
+    margin-bottom: 0;
   }
 }
 
 .techSpecs {
-  margin-bottom: 56px;
+  grid-column: 14/-1;
+  grid-row: 2/3;
 
-  h2 {
-    font-family: $font-main;
-    font-size: 22px;
-    font-weight: $fw-bold;
-    margin-bottom: 16px;
-    color: $color-primary;
+  &__title {
+    margin-bottom: 32px;
     padding-bottom: 16px;
     border-bottom: 1px solid $color-elements;
+    color: $color-primary;
   }
 
-  ul {
+  &__list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -233,34 +197,14 @@
       display: flex;
       justify-content: space-between;
       padding: 8px 0;
-      font-family: $font-main;
-      font-size: 14px;
-      border-bottom: 1px solid $color-elements;
 
-      &:last-child {
-        border-bottom: none;
+      @extend %body-text;
+
+      color: $color-secondary;
+
+      span {
+        color: $color-primary;
       }
     }
-  }
-}
-
-.suggested {
-  margin-bottom: 56px;
-
-  h2 {
-    font-family: $font-main;
-    font-size: 22px;
-    font-weight: $fw-bold;
-    margin-bottom: 24px;
-    color: $color-primary;
-    padding-bottom: 16px;
-    border-bottom: 1px solid $color-elements;
-  }
-
-  .suggestedList {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    padding-bottom: 16px;
   }
 }

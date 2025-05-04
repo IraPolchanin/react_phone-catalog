@@ -1,18 +1,16 @@
-import classNames from 'classnames';
-
 import { useProducts } from '@/contexts/ProductsContext';
 
-import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsSlider } from './components/ProductsSlider';
 import { CategorySection } from './components/CategorySection';
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const { brandNewProducts, hotPricesProducts, loading } = useProducts();
 
   return (
-    <div className={styles.homePage}>
-      <section className={styles.homePage__titleSection}>
+    <>
+      <section className={styles.homePage__section}>
         <h1 className={styles.homePage__titleHidden}>Product Catalog</h1>
 
         <div role="heading" aria-level={1} className={styles.homePage__title}>
@@ -20,12 +18,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section
-        className={classNames(
-          styles.homePage__section,
-          styles['homePage__section--banner'], // Use bracket notation for the modifier
-        )}
-      >
+      <section className={styles.homePage__section}>
         <PicturesSlider />
       </section>
 
@@ -47,6 +40,6 @@ export const HomePage = () => {
           <ProductsSlider title="Hot prices" products={hotPricesProducts} />
         </section>
       )}
-    </div>
+    </>
   );
 };

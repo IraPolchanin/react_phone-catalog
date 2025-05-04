@@ -3,63 +3,25 @@
 .cartPage {
   @extend %container;
 
-  padding: 40px 0 80px;
-
   .backLink {
     margin-bottom: 16px;
-
-    a {
-      @extend %small-text;
-
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-      color: #89939a;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    .backIcon {
-      margin-right: 4px;
-      font-size: 16px;
-      padding: 5px;
-      color: $color-primary;
-    }
   }
 
   .title {
-    @extend %h1;
-
     margin-bottom: 32px;
   }
 
   .emptyCart {
-    text-align: center;
+    @extend %flex-center;
+
+    flex-direction: column;
     padding: 48px 0;
-    border-top: 1px solid $color-icons;
 
     p {
-      font-size: 16px;
+      @extend %body-text;
+
       margin-bottom: 24px;
       color: $color-secondary;
-    }
-
-    .continueShoppingLink {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: $color-red;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background-color 0.2s;
-
-      &:hover {
-        background-color: color-mix(in srgb, $color-red, black 15%);
-      }
     }
   }
 
@@ -76,25 +38,9 @@
 
   .totalWrapper {
     grid-column: 17 / -1;
-    margin-top: 24px;
-    border-top: 1px solid $color-icons;
-    padding-top: 24px;
-  }
-
-  // Додаткові стилі для примітки (як у макеті)
-  .noteSection {
-    margin-top: 32px;
-    padding-top: 16px;
-    border-top: 1px solid $color-icons;
-    color: $color-secondary;
-    font-size: 12px;
-    line-height: 1.4;
-
-    h2 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: $color-primary;
-    }
+    padding: 24px;
+    border: 1px solid $color-elements;
+    height: auto;
+    align-self: start;
   }
 }

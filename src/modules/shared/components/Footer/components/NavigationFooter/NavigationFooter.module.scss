@@ -1,0 +1,23 @@
+.navigationFooter {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+
+  @include on-mobile {
+    display: none;
+  }
+
+  &__link {
+    color: $color-secondary;
+    text-decoration: none;
+
+    @extend %uppercase;
+
+    transition: $transition;
+
+    &:hover {
+      color: $color-primary;
+      text-decoration: underline;
+    }
+  }
+}

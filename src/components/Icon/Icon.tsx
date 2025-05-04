@@ -1,6 +1,6 @@
-// src/components/Icon/Icon.tsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import clsx from 'clsx';
 
 import { IconType, IconProps } from '@/types';
 
@@ -25,14 +25,15 @@ const iconPaths: Record<IconType, string> = {
 export const Icon: React.FC<IconProps> = props => {
   const {
     icon,
+    variant,
     className = '',
     ariaLabel,
     showCounter = false,
     count = 0,
     withText = false,
     text = '',
-    isMobile = false,
     isActive = false,
+    disabled = false,
   } = props;
 
   const iconPath = iconPaths[icon];
@@ -45,16 +46,22 @@ export const Icon: React.FC<IconProps> = props => {
 
   const defaultAriaLabel = `${icon} ${props.as === 'link' ? 'link' : 'button'}`;
 
+  const classNames = clsx(styles.icon, className, {
+    [styles.favorite]: variant === 'favorite',
+    [styles.sliderControl]: variant === 'slider-control',
+    [styles.backLink]: variant === 'backLink',
+    [styles.backToTop]: variant === 'back_to_top',
+    [styles.link]: props.as === 'link',
+    [styles.withText]: withText,
+    [styles.active]: isActive,
+  });
+
   const commonProps = {
-    className: `${styles.icon} ${styles[`icon--${icon}`]} ${
-      props.as === 'link' ? styles['icon--link'] : ''
-    } ${isMobile ? styles.iconMobile : ''} ${withText ? styles.withText : ''} ${
-      isActive ? styles.active : ''
-    } ${className}`,
+    className: classNames,
     'aria-label': ariaLabel || defaultAriaLabel,
     children: (
       <>
-        <img src={iconPath} alt={`${icon} icon`} className={styles.iconImage} />
+        <img src={iconPath} alt={`${icon} icon`} className={styles.image} />
         {withText && text && <span className={styles.text}>{text}</span>}
         {showCounter && count > 0 && (
           <span className={styles.counter}>{count}</span>
@@ -67,13 +74,17 @@ export const Icon: React.FC<IconProps> = props => {
     return (
       <NavLink
         to={props.to}
-        onClick={props.onClick}
+        onClick={disabled ? undefined : props.onClick}
         className={({ isActive: navLinkIsActive }) =>
-          `${styles.icon} ${styles[`icon--${icon}`]} ${styles['icon--link']} ${
-            isMobile ? styles.iconMobile : ''
-          } ${withText ? styles.withText : ''} ${className} ${
-            navLinkIsActive || isActive ? styles.active : ''
-          } ${navLinkIsActive || isActive ? styles['active--link'] : ''}`
+          clsx(styles.icon, className, {
+            [styles.favorite]: variant === 'favorite',
+            [styles.sliderControl]: variant === 'slider-control',
+            [styles.backLink]: variant === 'backLink',
+            [styles.backToTop]: variant === 'back_to_top',
+            [styles.link]: true,
+            [styles.withText]: withText,
+            [styles.active]: navLinkIsActive || isActive,
+          })
         }
         aria-label={commonProps['aria-label']}
         {...props.navLinkProps}
@@ -86,8 +97,8 @@ export const Icon: React.FC<IconProps> = props => {
   return (
     <button
       type={props.type || 'button'}
-      onClick={props.onClick}
-      disabled={props.disabled}
+      onClick={disabled ? undefined : props.onClick}
+      disabled={disabled}
       className={commonProps.className}
       aria-label={commonProps['aria-label']}
     >

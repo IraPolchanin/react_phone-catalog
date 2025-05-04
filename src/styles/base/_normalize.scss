@@ -179,18 +179,15 @@ dfn {
   */
 
 h1 {
-  font-size: 2em;
   margin: 0;
 }
 
 @if $legacy_browser_support {
   h2 {
-    font-size: 1.5em;
     margin: 0;
   }
 
   h3 {
-    font-size: 1.17em;
     margin: 1em 0;
   }
 
@@ -200,12 +197,10 @@ h1 {
   }
 
   h5 {
-    font-size: 0.83em;
     margin: 0;
   }
 
   h6 {
-    font-size: 0.67em;
     margin: 0;
   }
 }

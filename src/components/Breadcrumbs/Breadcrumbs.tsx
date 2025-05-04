@@ -1,4 +1,3 @@
-// src/components/Breadcrumbs/Breadcrumbs.tsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -65,11 +64,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
             {index === 0 ? (
               <Icon as="link" to={item.to} icon="home" ariaLabel="Home" />
             ) : !isLast ? (
-              <Link to={item.to} className={styles.breadcrumbLink}>
+              <Link to={item.to} className={styles.link}>
                 {item.label}
               </Link>
             ) : (
-              <span className={styles.breadcrumbCurrent}>{item.label}</span>
+              <span className={styles.current}>{item.label}</span>
             )}
             {!isLast && <span className={styles.separator}> {'>'} </span>}
           </React.Fragment>

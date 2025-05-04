@@ -1,8 +1,8 @@
-// src/modules/HomePage/components/ProductsSlider/ProductsSlider.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ProductCard } from '@/modules/shared/components/ProductCard';
 import { Product } from '@/types';
+import { Icon } from '@/components/Icon';
 
 import styles from './ProductsSlider.module.scss';
 
@@ -18,7 +18,12 @@ export const ProductsSlider = ({ title, products }: Props) => {
   // Calculate total pages needed
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
-  // Function to safely format path
+  // Reset current index if products change and current index is out of bounds
+  useEffect(() => {
+    if (currentIndex >= totalPages && totalPages > 0) {
+      setCurrentIndex(totalPages - 1);
+    }
+  }, [products, currentIndex, totalPages]);
 
   const goToNext = () => {
     if (currentIndex < totalPages - 1) {
@@ -42,31 +47,30 @@ export const ProductsSlider = ({ title, products }: Props) => {
     (currentIndex + 1) * itemsPerPage,
   );
 
+  // Specific disabled logic for each arrow
+  const isFirstPage = currentIndex === 0;
+  const isLastPage = currentIndex === totalPages - 1;
+
   return (
     <section className={styles.sliderSection}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.controls}>
-          <button
-            className={styles.controlButton}
+          <Icon
+            icon="arrow_left"
+            variant="slider-control"
             onClick={goToPrev}
-            disabled={products.length <= itemsPerPage}
-            aria-label="Previous products"
-            type="button"
-          >
-            <span className={styles.arrow}>&#10094;</span>
-          </button>
-
-          <button
-            className={styles.controlButton}
+            disabled={isFirstPage}
+            ariaLabel="Previous products"
+          />
+          <Icon
+            icon="arrow_right"
+            variant="slider-control"
             onClick={goToNext}
-            disabled={products.length <= itemsPerPage}
-            aria-label="Next products"
-            type="button"
-          >
-            <span className={styles.arrow}>&#10095;</span>
-          </button>
+            disabled={isLastPage}
+            ariaLabel="Next products"
+          />
         </div>
       </div>
 

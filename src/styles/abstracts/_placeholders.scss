@@ -16,6 +16,12 @@
   }
 }
 
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 %container {
   max-width: 1136px;
   margin: 0 auto;
@@ -46,7 +52,7 @@
 
 %h2 {
   margin: 0;
-  font-family: $font-arial;
+  font-family: $font-main;
   font-weight: $fw-bold;
   font-size: 32px;
   line-height: 41px;
@@ -59,7 +65,7 @@
 
 %h3 {
   margin: 0;
-  font-family: $font-arial;
+  font-family: $font-main;
   font-weight: $fw-semibold;
   font-size: 22px;
   line-height: 31px;
@@ -72,7 +78,7 @@
 
 %h4 {
   margin: 0;
-  font-family: $font-arial;
+  font-family: $font-main;
   font-weight: $fw-semibold;
   font-size: 20px;
   line-height: 26px;

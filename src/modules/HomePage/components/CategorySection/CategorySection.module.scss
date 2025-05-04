@@ -1,84 +1,80 @@
-.section {
-  margin: 40px 0;
+.categorySection {
+  padding: 20px;
 }
 
 .title {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 24px;
-  color: #313237;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.imageWrapper {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 24px;
-  transition: transform 0.3s ease;
-  overflow: hidden;
+
+  @media (max-width: 600px) {
+    font-size: 28px;
+  }
+}
+
+.categories {
   width: 100%;
+  display: flex;
+  gap: 16px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 }
 
 .card {
   text-decoration: none;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 24px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #e2e6e9;
-  transition: all 0.3s ease;
+
+  @media (max-width: 900px) {
+    flex: none;
+    width: 100%;
+  }
 
   &:hover {
-    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.1);
-
-    .imageWrapper {
-      transform: scale(1.1);
-    }
+    transition: $transition;
   }
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: $transition;
+}
+
+.mobilePhones {
+  background-color: #444240; /* Purple-gray for Mobile phones */
+}
+
+.tablets {
+  background-color: #7E8084; /* Light gray for Tablets */
+}
+
+.accessories {
+  background-color: #AD617F; /* Pink for Accessories */
 }
 
 .image {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  object-position: 10em 10em;
+  transition: transform 0.3s ease;
+
+  .card:hover & {
+    transform: scale(1.1);
+  }
 }
 
 .name {
-  font-size: 20px;
-  font-weight: 600;
-  color: #313237;
-  margin: 0 0 4px;
+  margin-bottom: 4px;
+  color: $color-primary;
 }
 
 .count {
-  font-size: 14px;
-  color: #89939a;
-  margin: 0;
-}
+  @extend %body-text;
 
-// Медіа-запити для адаптивності
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .title {
-    font-size: 28px;
-  }
+  color: $color-secondary;
 }

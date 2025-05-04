@@ -4,7 +4,9 @@
   justify-content: center;
 
   @include on-mobile {
-    display: none;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 16px;
   }
 
   &__link {

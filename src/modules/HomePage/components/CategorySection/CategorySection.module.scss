@@ -4,18 +4,15 @@
 
 .title {
   margin-bottom: 24px;
-
-  @media (max-width: 600px) {
-    font-size: 28px;
-  }
 }
 
 .categories {
   width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   gap: 16px;
 
-  @media (max-width: 900px) {
+  @include on-mobile {
     flex-direction: column;
   }
 }
@@ -25,15 +22,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-
-  @media (max-width: 900px) {
-    flex: none;
-    width: 100%;
-  }
-
-  &:hover {
-    transition: $transition;
-  }
+  transition: $transition;
 }
 
 .imageWrapper {
@@ -45,15 +34,15 @@
 }
 
 .mobilePhones {
-  background-color: #444240; /* Purple-gray for Mobile phones */
+  background-color: #444240;
 }
 
 .tablets {
-  background-color: #7E8084; /* Light gray for Tablets */
+  background-color: #7E8084;
 }
 
 .accessories {
-  background-color: #AD617F; /* Pink for Accessories */
+  background-color: #AD617F;
 }
 
 .image {
@@ -66,6 +55,10 @@
   .card:hover & {
     transform: scale(1.1);
   }
+
+   @include on-tablet {
+   object-position: 5em 5em;
+   }
 }
 
 .name {

@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import { useProducts } from '@/contexts/ProductsContext';
 
 import { PicturesSlider } from './components/PicturesSlider';
@@ -23,7 +25,12 @@ export const HomePage = () => {
       </section>
 
       {!loading && brandNewProducts.length > 0 && (
-        <section className={styles.homePage__section}>
+        <section
+          className={clsx(
+            styles.homePage__section,
+            styles['homePage__section--slider'], // ← ОЦЕЙ варіант правильний
+          )}
+        >
           <ProductsSlider
             title="Brand new models"
             products={brandNewProducts}
@@ -36,7 +43,12 @@ export const HomePage = () => {
       </section>
 
       {!loading && hotPricesProducts.length > 0 && (
-        <section className={styles.homePage__section}>
+        <section
+          className={clsx(
+            styles.homePage__section,
+            styles['homePage__section--slider'], // ← ОЦЕЙ варіант правильний
+          )}
+        >
           <ProductsSlider title="Hot prices" products={hotPricesProducts} />
         </section>
       )}

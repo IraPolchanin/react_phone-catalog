@@ -9,6 +9,12 @@
   margin-bottom: 24px;
 }
 
+.title {
+  @include on-mobile {
+    max-width: 136px;
+  }
+}
+
 .controls {
   display: flex;
   gap: 16px;
@@ -18,27 +24,12 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-}
 
-// Media queries for responsiveness
-@media (max-width: 1200px) {
-  .productsContainer {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .productsContainer {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .productsContainer {
-    grid-template-columns: 1fr;
-  }
-
-  .title {
-    font-size: 28px;
+  @include on-tablet {
+    display: flex;
+    flex-wrap: nowrap; // ❗ Не дозволяти перенос
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 }

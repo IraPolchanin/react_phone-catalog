@@ -29,10 +29,12 @@
 
   @include on-tablet {
     max-width: 592px;
+    padding: $container-padding-tablet;
   }
 
   @include on-mobile {
     max-width: 288px;
+    padding: $container-padding-mobile;
   }
 }
 

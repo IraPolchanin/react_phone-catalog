@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
+import { Icon } from '@/components/Icon'; // Імпортуйте компонент Icon
 import { Product } from '@/types/Product';
 import { useProducts } from '@/contexts/ProductsContext';
 
@@ -50,6 +51,8 @@ export const PicturesSlider = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const slideContainerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const goToNext = useCallback(() => {
     if (isTransitioning) {
@@ -84,6 +87,31 @@ export const PicturesSlider = () => {
     [isTransitioning, currentIndex],
   );
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) {
+      return;
+    }
+
+    const touchEndX = e.touches[0].clientX;
+    const diffX = touchStartX.current - touchEndX;
+
+    if (diffX > 50 && !isTransitioning) {
+      goToNext();
+      touchStartX.current = null;
+    } else if (diffX < -50 && !isTransitioning) {
+      goToPrev();
+      touchStartX.current = null;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    touchStartX.current = null;
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       goToNext();
@@ -94,16 +122,21 @@ export const PicturesSlider = () => {
 
   return (
     <div className={styles.picturesSlider}>
-      <button
+      <Icon
+        icon="arrow_left"
+        variant="slider-control"
         onClick={goToPrev}
-        className={styles.picturesSlider__arrowButton}
         aria-label="Previous image"
         type="button"
-      >
-        ❮
-      </button>
+      />
 
-      <div className={styles.picturesSlider__slideContainer}>
+      <div
+        ref={slideContainerRef}
+        className={styles.picturesSlider__slideContainer}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {slides.map((slide, index) => (
           <div
             key={`slider-${index}`}
@@ -151,14 +184,13 @@ export const PicturesSlider = () => {
         ))}
       </div>
 
-      <button
+      <Icon
+        icon="arrow_right"
+        variant="slider-control"
         onClick={goToNext}
-        className={styles.picturesSlider__arrowButton}
         aria-label="Next image"
         type="button"
-      >
-        ❯
-      </button>
+      />
 
       <div className={styles.picturesSlider__dots}>
         {slides.map((_, i) => (

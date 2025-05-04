@@ -1,5 +1,3 @@
-@use '../../../../styles/abstracts/abstracts' as *;
-
 .picturesSlider {
   @extend %grid-system;
 
@@ -9,12 +7,22 @@
   grid-template-rows: 400px 24px;
   row-gap: 16px;
 
+  @include on-mobile {
+    &>button {
+      display: none;
+    }
+  }
+
   &__slideContainer {
     position: relative;
     width: 100%;
     height: 100%;
     grid-column: 2/-2;
     grid-row: 1/2;
+
+    @include on-tablet {
+      grid-column: 1/-1;
+    }
   }
 
   &__slide {
@@ -135,32 +143,6 @@
     &:focus {
       outline: none;
       box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.5);
-    }
-  }
-
-  &__arrowButton {
-    border: 1px solid #b4bdc4;
-    background: $color-white;
-    cursor: pointer;
-    transition: $transition;
-    grid-row: 1/2;
-    font-size: 16px;
-
-    &:first-of-type {
-      grid-column: 1/2;
-    }
-
-    &:last-of-type {
-      grid-column: -1/-2;
-    }
-
-    &:hover {
-      background-color: $color-elements;
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
     }
   }
 

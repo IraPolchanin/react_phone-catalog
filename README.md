@@ -777,3 +777,676 @@ react_phone-catalog
 └─ vite.config.ts
 
 ```
+
+```
+react_phone-catalog
+├─ .editorconfig
+├─ .env
+├─ .eslintignore
+├─ .eslintrc.cjs
+├─ .husky
+│  ├─ _
+│  │  ├─ applypatch-msg
+│  │  ├─ commit-msg
+│  │  ├─ h
+│  │  ├─ husky.sh
+│  │  ├─ post-applypatch
+│  │  ├─ post-checkout
+│  │  ├─ post-commit
+│  │  ├─ post-merge
+│  │  ├─ post-rewrite
+│  │  ├─ pre-applypatch
+│  │  ├─ pre-auto-gc
+│  │  ├─ pre-commit
+│  │  ├─ pre-merge-commit
+│  │  ├─ pre-push
+│  │  ├─ pre-rebase
+│  │  └─ prepare-commit-msg
+│  └─ pre-commit
+├─ .prettierignore
+├─ .prettierrc
+├─ .stylelintignore
+├─ .stylelintrc.js
+├─ LICENSE
+├─ README.md
+├─ cypress
+│  ├─ integration
+│  │  └─ page.spec.js
+│  ├─ support
+│  │  ├─ commands.ts
+│  │  ├─ component-index.html
+│  │  ├─ component.ts
+│  │  └─ e2e.ts
+│  └─ tsconfig.json
+├─ cypress.config.ts
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ api
+│  │  ├─ accessories.json
+│  │  ├─ phones.json
+│  │  ├─ products.json
+│  │  └─ tablets.json
+│  ├─ fonts
+│  │  ├─ Mont-Bold.otf
+│  │  ├─ Mont-Regular.otf
+│  │  └─ Mont-SemiBold.otf
+│  └─ img
+│     ├─ accessories
+│     │  ├─ apple-watch-se
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  ├─ silver
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  └─ space-gray
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     └─ 02.webp
+│     │  ├─ apple-watch-series-3
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  ├─ silver
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  └─ space-gray
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     └─ 02.webp
+│     │  ├─ apple-watch-series-4
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  ├─ silver
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  └─ space-gray
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     └─ 02.webp
+│     │  ├─ apple-watch-series-5
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  ├─ silver
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  └─ space-gray
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     └─ 02.webp
+│     │  └─ apple-watch-series-6
+│     │     ├─ blue
+│     │     │  ├─ 00.webp
+│     │     │  ├─ 01.webp
+│     │     │  └─ 02.webp
+│     │     ├─ gold
+│     │     │  ├─ 00.webp
+│     │     │  ├─ 01.webp
+│     │     │  └─ 02.webp
+│     │     ├─ red
+│     │     │  ├─ 00.webp
+│     │     │  ├─ 01.webp
+│     │     │  └─ 02.webp
+│     │     ├─ silver
+│     │     │  ├─ 00.webp
+│     │     │  ├─ 01.webp
+│     │     │  └─ 02.webp
+│     │     └─ space-gray
+│     │        ├─ 00.webp
+│     │        ├─ 01.webp
+│     │        └─ 02.webp
+│     ├─ banner-accessories.png
+│     ├─ banner-phones.png
+│     ├─ banner-tablets.png
+│     ├─ cart-is-empty.png
+│     ├─ category-accessories.png
+│     ├─ category-accessories.webp
+│     ├─ category-phones.png
+│     ├─ category-phones.webp
+│     ├─ category-tablets.png
+│     ├─ category-tablets.webp
+│     ├─ page-not-found.png
+│     ├─ phones
+│     │  ├─ apple-iphone-11
+│     │  │  ├─ black
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ green
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ purple
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ red
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ white
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  └─ yellow
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     ├─ 03.webp
+│     │  │     └─ 04.webp
+│     │  ├─ apple-iphone-11-pro
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  ├─ midnightgreen
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  ├─ silver
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  └─ spacegray
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     └─ 02.webp
+│     │  ├─ apple-iphone-11-pro-max
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  ├─ midnightgreen
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  ├─ silver
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  └─ spacegray
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     └─ 02.webp
+│     │  ├─ apple-iphone-12
+│     │  │  ├─ black
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  ├─ purple
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  ├─ red
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  └─ white
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 03.webp
+│     │  │     └─ 04.webp
+│     │  ├─ apple-iphone-13-mini
+│     │  │  ├─ blue
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  ├─ midnight
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  ├─ pink
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  └─ white
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     └─ 03.webp
+│     │  ├─ apple-iphone-13-pro-max
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  ├─ graphite
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  └─ sierrablue
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     └─ 03.webp
+│     │  ├─ apple-iphone-14
+│     │  │  ├─ midnight
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ purple
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  └─ yellow
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     ├─ 03.webp
+│     │  │     └─ 04.webp
+│     │  ├─ apple-iphone-14-pro
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  └─ spaceblack
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     ├─ 03.webp
+│     │  │     └─ 04.webp
+│     │  ├─ apple-iphone-7
+│     │  │  ├─ black
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ rosegold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  └─ silver
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     ├─ 03.webp
+│     │  │     └─ 04.webp
+│     │  ├─ apple-iphone-7-plus
+│     │  │  ├─ black
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ rosegold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  └─ silver
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     ├─ 03.webp
+│     │  │     └─ 04.webp
+│     │  ├─ apple-iphone-8
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  ├─ silver
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  └─ spacegray
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     └─ 03.webp
+│     │  ├─ apple-iphone-xr
+│     │  │  ├─ coral
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  └─ 02.webp
+│     │  │  ├─ red
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  ├─ white
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  └─ 03.webp
+│     │  │  └─ yellow
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     ├─ 03.webp
+│     │  │     └─ 04.webp
+│     │  ├─ apple-iphone-xs
+│     │  │  ├─ gold
+│     │  │  │  ├─ 00.webp
+│     │  │  │  ├─ 01.webp
+│     │  │  │  ├─ 02.webp
+│     │  │  │  ├─ 03.webp
+│     │  │  │  └─ 04.webp
+│     │  │  └─ spacegray
+│     │  │     ├─ 00.webp
+│     │  │     ├─ 01.webp
+│     │  │     ├─ 02.webp
+│     │  │     ├─ 03.webp
+│     │  │     └─ 04.webp
+│     │  └─ apple-iphone-xs-max
+│     │     ├─ gold
+│     │     │  ├─ 00.webp
+│     │     │  ├─ 01.webp
+│     │     │  ├─ 02.webp
+│     │     │  ├─ 03.webp
+│     │     │  └─ 04.webp
+│     │     ├─ silver
+│     │     │  ├─ 00.webp
+│     │     │  ├─ 01.webp
+│     │     │  ├─ 02.webp
+│     │     │  ├─ 03.webp
+│     │     │  └─ 04.webp
+│     │     └─ spacegray
+│     │        ├─ 00.webp
+│     │        ├─ 01.webp
+│     │        ├─ 02.webp
+│     │        ├─ 03.webp
+│     │        └─ 04.webp
+│     ├─ picthree.bdd2e0fc.png
+│     ├─ product-not-found.png
+│     ├─ svg
+│     │  ├─ icons
+│     │  │  ├─ arrow_down.svg
+│     │  │  ├─ arrow_left.svg
+│     │  │  ├─ arrow_right.svg
+│     │  │  ├─ arrow_up.svg
+│     │  │  ├─ close.svg
+│     │  │  ├─ favourites.svg
+│     │  │  ├─ favourites_filled.svg
+│     │  │  ├─ home.svg
+│     │  │  ├─ menu.svg
+│     │  │  ├─ minus.svg
+│     │  │  ├─ plus.svg
+│     │  │  ├─ search.svg
+│     │  │  └─ shopping_bag.svg
+│     │  ├─ logo.svg
+│     │  └─ logoOK.svg
+│     └─ tablets
+│        ├─ apple-ipad-10-2-2020
+│        │  ├─ gold
+│        │  │  ├─ 00.webp
+│        │  │  ├─ 01.webp
+│        │  │  ├─ 02.webp
+│        │  │  └─ 03.webp
+│        │  ├─ silver
+│        │  │  ├─ 00.webp
+│        │  │  ├─ 01.webp
+│        │  │  ├─ 02.webp
+│        │  │  └─ 03.webp
+│        │  └─ spacegray
+│        │     ├─ 00.webp
+│        │     ├─ 01.webp
+│        │     ├─ 02.webp
+│        │     └─ 03.webp
+│        ├─ apple-ipad-air-4th-gen
+│        │  ├─ green
+│        │  │  ├─ 00.webp
+│        │  │  ├─ 02.webp
+│        │  │  ├─ 03.webp
+│        │  │  └─ 04.webp
+│        │  ├─ rose-gold
+│        │  │  ├─ 00.webp
+│        │  │  ├─ 01.webp
+│        │  │  ├─ 02.webp
+│        │  │  └─ 03.webp
+│        │  ├─ silver
+│        │  │  ├─ 00.webp
+│        │  │  ├─ 01.webp
+│        │  │  ├─ 02.webp
+│        │  │  └─ 03.webp
+│        │  └─ sky-blue
+│        │     ├─ 00.webp
+│        │     ├─ 01.webp
+│        │     ├─ 02.webp
+│        │     └─ 03.webp
+│        ├─ apple-ipad-mini-5th-gen
+│        │  ├─ gold
+│        │  │  ├─ 00.webp
+│        │  │  └─ 01.webp
+│        │  ├─ silver
+│        │  │  ├─ 00.webp
+│        │  │  └─ 01.webp
+│        │  └─ spacegray
+│        │     ├─ 00.webp
+│        │     └─ 01.webp
+│        ├─ apple-ipad-mini-6th-gen
+│        │  ├─ pink
+│        │  │  ├─ 00.webp
+│        │  │  ├─ 01.webp
+│        │  │  └─ 02.webp
+│        │  ├─ spacegray
+│        │  │  ├─ 00.webp
+│        │  │  ├─ 01.webp
+│        │  │  └─ 02.webp
+│        │  └─ starlight
+│        │     ├─ 00.webp
+│        │     ├─ 01.webp
+│        │     └─ 02.webp
+│        └─ apple-ipad-pro-11-2021
+│           ├─ silver
+│           │  ├─ 00.webp
+│           │  ├─ 01.webp
+│           │  └─ 02.webp
+│           └─ spacegray
+│              ├─ 00.webp
+│              ├─ 01.webp
+│              └─ 02.webp
+├─ setup.md
+├─ src
+│  ├─ App.tsx
+│  ├─ Root.tsx
+│  ├─ components
+│  │  ├─ Breadcrumbs
+│  │  │  ├─ Breadcrumbs.module.scss
+│  │  │  ├─ Breadcrumbs.tsx
+│  │  │  └─ index.ts
+│  │  ├─ Button
+│  │  │  ├─ Button.module.scss
+│  │  │  ├─ Button.tsx
+│  │  │  └─ index.ts
+│  │  ├─ Icon
+│  │  │  ├─ Icon.module.scss
+│  │  │  ├─ Icon.tsx
+│  │  │  └─ index.ts
+│  │  ├─ Loader
+│  │  │  ├─ Loader.module.scss
+│  │  │  ├─ Loader.tsx
+│  │  │  └─ index.ts
+│  │  ├─ Logo
+│  │  │  ├─ Logo.module.scss
+│  │  │  ├─ Logo.tsx
+│  │  │  └─ index.ts
+│  │  ├─ Pagination
+│  │  │  ├─ Pagination.module.scss
+│  │  │  ├─ Pagination.tsx
+│  │  │  └─ index.ts
+│  │  ├─ ScrollToTop
+│  │  │  ├─ ScrollToTop.tsx
+│  │  │  └─ index.ts
+│  │  └─ SuggestedProducts
+│  │     ├─ SuggestedProducts.module.scss
+│  │     ├─ SuggestedProducts.tsx
+│  │     └─ index.ts
+│  ├─ contexts
+│  │  ├─ CartContext.tsx
+│  │  ├─ FavoritesContext.tsx
+│  │  └─ ProductsContext.tsx
+│  ├─ index.tsx
+│  ├─ modules
+│  │  ├─ CartPage
+│  │  │  ├─ CartPage.module.scss
+│  │  │  ├─ CartPage.tsx
+│  │  │  └─ components
+│  │  │     ├─ CartItem
+│  │  │     │  ├─ CartItem.module.scss
+│  │  │     │  ├─ CartItem.tsx
+│  │  │     │  └─ index.ts
+│  │  │     └─ CartTotal
+│  │  │        ├─ CartTotal.module.scss
+│  │  │        ├─ CartTotal.tsx
+│  │  │        └─ index.ts
+│  │  ├─ FavoritesPage
+│  │  │  ├─ FavoritesPage.module.scss
+│  │  │  ├─ FavoritesPage.tsx
+│  │  │  └─ components
+│  │  │     └─ FavoritesList
+│  │  │        ├─ FavoritesList.module.scss
+│  │  │        ├─ FavoritesList.tsx
+│  │  │        └─ index.ts
+│  │  ├─ HomePage
+│  │  │  ├─ HomePage.module.scss
+│  │  │  ├─ HomePage.tsx
+│  │  │  └─ components
+│  │  │     ├─ CategorySection
+│  │  │     │  ├─ CategorySection.module.scss
+│  │  │     │  ├─ CategorySection.tsx
+│  │  │     │  └─ index.ts
+│  │  │     ├─ PicturesSlider
+│  │  │     │  ├─ PicturesSlider.module.scss
+│  │  │     │  ├─ PicturesSlider.tsx
+│  │  │     │  └─ index.ts
+│  │  │     └─ ProductsSlider
+│  │  │        ├─ ProductsSlider.module.scss
+│  │  │        ├─ ProductsSlider.tsx
+│  │  │        └─ index.ts
+│  │  ├─ NotFoundPage
+│  │  │  ├─ NotFoundPage.module.scss
+│  │  │  ├─ NotFoundPage.tsx
+│  │  │  └─ index.ts
+│  │  ├─ ProductDetailsPage
+│  │  │  ├─ ProductDetailsPage.module.scss
+│  │  │  ├─ ProductDetailsPage.tsx
+│  │  │  └─ components
+│  │  │     └─ ProductGallery
+│  │  │        ├─ ProductGallery.module.scss
+│  │  │        ├─ ProductGallery.tsx
+│  │  │        └─ index.ts
+│  │  ├─ ProductPage
+│  │  │  ├─ ProductPage.module.scss
+│  │  │  ├─ ProductPage.tsx
+│  │  │  └─ components
+│  │  │     └─ ProductList
+│  │  │        ├─ ProductList.module.scss
+│  │  │        ├─ ProductList.tsx
+│  │  │        └─ index.ts
+│  │  └─ shared
+│  │     └─ components
+│  │        ├─ Footer
+│  │        │  ├─ Footer.module.scss
+│  │        │  ├─ Footer.tsx
+│  │        │  ├─ components
+│  │        │  │  └─ NavigationFooter
+│  │        │  │     ├─ NavigationFooter.module.scss
+│  │        │  │     ├─ NavigationFooter.tsx
+│  │        │  │     └─ index.ts
+│  │        │  └─ index.ts
+│  │        ├─ Header
+│  │        │  ├─ Header.module.scss
+│  │        │  ├─ Header.tsx
+│  │        │  ├─ components
+│  │        │  │  ├─ HeaderCartCount
+│  │        │  │  │  ├─ HeaderCartCount.tsx
+│  │        │  │  │  └─ index.ts
+│  │        │  │  └─ HeaderFavoritesCount
+│  │        │  │     ├─ HeaderFavoritesCount.tsx
+│  │        │  │     └─ index.ts
+│  │        │  └─ index.ts
+│  │        ├─ Navigation
+│  │        │  ├─ Navigation.module.scss
+│  │        │  ├─ Navigation.tsx
+│  │        │  └─ index.ts
+│  │        └─ ProductCard
+│  │           ├─ ProductCard.module.scss
+│  │           ├─ ProductCard.tsx
+│  │           └─ index.ts
+│  ├─ styles
+│  │  ├─ abstracts
+│  │  │  ├─ _abstracts.scss
+│  │  │  ├─ _mixins.scss
+│  │  │  ├─ _placeholders.scss
+│  │  │  └─ _variables.scss
+│  │  ├─ base
+│  │  │  ├─ _base.scss
+│  │  │  ├─ _fonts.scss
+│  │  │  ├─ _normalize.scss
+│  │  │  └─ _typography.scss
+│  │  ├─ global.scss
+│  │  └─ layout
+│  │     ├─ _container.scss
+│  │     ├─ _layout.scss
+│  │     └─ _page.scss
+│  ├─ types
+│  │  ├─ Cart.ts
+│  │  ├─ Favorites.ts
+│  │  ├─ Icon.ts
+│  │  ├─ Product.ts
+│  │  └─ index.ts
+│  ├─ utils
+│  │  ├─ api.ts
+│  │  ├─ sortUtils.ts
+│  │  └─ urlParamsUtils.ts
+│  └─ vite-env.d.ts
+├─ tsconfig.json
+└─ vite.config.ts
+
+```

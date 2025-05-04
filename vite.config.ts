@@ -2,10 +2,13 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-export default defineConfig({
+// Додаємо параметр mode в функцію конфігурації
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/react_phone-catalog/' : '/',
+
   plugins: [
     react({
-      jsxRuntime: 'automatic', // Включає нову JSX трансформацію (React 17+)
+      jsxRuntime: 'automatic',
       babel: {
         plugins: [
           [
@@ -19,33 +22,37 @@ export default defineConfig({
       },
     }),
   ],
+
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'), // Абсолютні імпорти
+      '@': path.resolve(__dirname, './src'),
     },
   },
+
   server: {
     port: 5174,
-    open: true, // Автоматично відкривати браузер
+    open: true,
   },
-  base: '/',
+
   css: {
     modules: {
-      localsConvention: 'camelCase', // camelCase для CSS модулів
+      localsConvention: 'camelCase',
     },
     preprocessorOptions: {
       scss: {
         includePaths: ['src'],
-        additionalData: `@use "@/styles/abstracts/abstracts" as *;`, // Глобальні SCSS змінні з abstracts.scss
+        additionalData: `@use "@/styles/abstracts/abstracts" as *;`,
       },
     },
   },
+
   build: {
     outDir: 'dist',
-    assetsInlineLimit: 4096, // 4kb
+    assetsInlineLimit: 4096,
     emptyOutDir: true,
   },
+
   optimizeDeps: {
-    include: ['react', 'react-dom'], // Оптимізація основних залежностей
+    include: ['react', 'react-dom'],
   },
-});
+}));

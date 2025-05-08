@@ -1,5 +1,4 @@
 .header {
-  // Main header layout
   height: $header-height;
   background: $color-white;
   box-shadow: 0 1px 0 $color-elements;
@@ -9,6 +8,10 @@
   width: 100%;
   padding: 0;
   gap: 24px;
+
+  @include on-tablet {
+    height: $header-height-tablet;
+  }
 
   &__container {
     height: 100%;
@@ -21,9 +24,12 @@
 
   &__logo {
     padding: 0 48px 0 24px;
+
+    @include on-tablet {
+      padding: 0 32px 0 16px;
+    }
   }
 
-  // Header icons (favorites, cart)
   &__icons {
     display: flex;
 
@@ -33,6 +39,10 @@
 
       &:hover:not(:disabled) {
         border-color: $color-elements;
+      }
+
+      @include on-tablet {
+        padding: 16px;
       }
     }
 
@@ -52,7 +62,8 @@
     transition: $transition;
 
     @include on-mobile {
-      display: block;
+      display: flex;
+      padding-right: 16px;
     }
 
     &:hover {

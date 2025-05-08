@@ -125,6 +125,7 @@ export const PicturesSlider = () => {
       <Icon
         icon="arrow_left"
         variant="slider-control"
+        fullHeight
         onClick={goToPrev}
         aria-label="Previous image"
         type="button"
@@ -187,6 +188,7 @@ export const PicturesSlider = () => {
       <Icon
         icon="arrow_right"
         variant="slider-control"
+        fullHeight
         onClick={goToNext}
         aria-label="Next image"
         type="button"

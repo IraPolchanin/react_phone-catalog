@@ -10,4 +10,8 @@
 
 .logoSvg {
   height: 28px;
+
+  @include on-tablet {
+    height: 23px;
+  }
 }

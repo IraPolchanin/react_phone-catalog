@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-// Додаємо параметр mode в функцію конфігурації
 export default defineConfig(({ mode }) => ({
   base: mode === 'production' ? '/react_phone-catalog/' : '/',
 
@@ -34,6 +33,12 @@ export default defineConfig(({ mode }) => ({
     open: true,
   },
 
+  preview: {
+    port: 4174,
+    open: '/react_phone-catalog/',
+    host: 'localhost',
+  },
+
   css: {
     modules: {
       localsConvention: 'camelCase',
@@ -48,9 +53,13 @@ export default defineConfig(({ mode }) => ({
 
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
     assetsInlineLimit: 4096,
     emptyOutDir: true,
+    sourcemap: true,
   },
+
+  publicDir: 'public',
 
   optimizeDeps: {
     include: ['react', 'react-dom'],

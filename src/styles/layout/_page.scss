@@ -16,5 +16,11 @@
   &__main {
     flex-grow: 1;
     min-height: calc(100vh - #{$header-height} - #{$footer-height});
+    padding-bottom: 80px;
+
+    @include on-tablet {
+      min-height: calc(100vh - #{$header-height-tablet} - #{$footer-height});
+      padding-bottom: 64px;
+    }
   }
 }

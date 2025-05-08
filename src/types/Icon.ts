@@ -27,6 +27,7 @@ export interface IconBaseProps {
   isActive?: boolean;
   isMobile?: boolean;
   disabled?: boolean;
+  fullHeight?: boolean;
 }
 
 export interface IconButtonProps extends IconBaseProps {

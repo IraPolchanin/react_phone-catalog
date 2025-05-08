@@ -24,7 +24,9 @@ $breakpoint-mobile: 639px;
 // Other
 $transition: all 0.3s ease-in-out;
 $header-height: 64px;
+$header-height-tablet: 48px;
 $footer-height: 96px;
-$container-padding: 24px 0 80px;
-$container-padding-tablet: 24px 0 64px;
-$container-padding-mobile: 24px 0 56px;
+$footer-height-mobile: 257px;
+$container-padding: 56px 0 0;
+$container-padding-tablet: 32px 0 0;
+$container-padding-mobile: 24px 0 0;

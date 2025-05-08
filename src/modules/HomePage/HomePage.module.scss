@@ -2,11 +2,35 @@
   @extend %container;
 }
 
+.homePage__section--pictures {
+  @include on-mobile {
+    max-width: none;
+  }
+}
+
 .homePage__section--slider {
+  padding: 72px 0 0;
+
+  @include on-tablet {
+    padding: 55px 0 0;
+  }
+
   @include on-mobile {
     padding-left: 0;
     padding-right: 0;
     overflow-x: auto;
+  }
+}
+
+.homePage__section--category {
+  padding: 40px 0 10px;
+
+  @include on-tablet {
+    padding: 26px 0 10px;
+  }
+
+  @include on-mobile {
+    padding: 16px 0 2px;
   }
 }
 

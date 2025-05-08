@@ -1,7 +1,11 @@
 .navigationFooter {
   display: flex;
-  gap: 32px;
+  gap: 107px;
   justify-content: center;
+
+  @include on-tablet {
+    gap: 13.5px;
+  }
 
   @include on-mobile {
     justify-content: flex-start;

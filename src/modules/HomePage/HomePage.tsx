@@ -20,7 +20,12 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section className={styles.homePage__section}>
+      <section
+        className={clsx(
+          styles.homePage__section,
+          styles['homePage__section--pictures'],
+        )}
+      >
         <PicturesSlider />
       </section>
 
@@ -28,7 +33,7 @@ export const HomePage = () => {
         <section
           className={clsx(
             styles.homePage__section,
-            styles['homePage__section--slider'], // ← ОЦЕЙ варіант правильний
+            styles['homePage__section--slider'],
           )}
         >
           <ProductsSlider
@@ -38,7 +43,12 @@ export const HomePage = () => {
         </section>
       )}
 
-      <section className={styles.homePage__section}>
+      <section
+        className={clsx(
+          styles.homePage__section,
+          styles['homePage__section--category'], // ← ОЦЕЙ варіант правильний
+        )}
+      >
         <CategorySection />
       </section>
 

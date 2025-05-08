@@ -52,7 +52,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
   const isLastPage = currentIndex === totalPages - 1;
 
   return (
-    <section className={styles.sliderSection}>
+    <div className={styles.sliderSection}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
 
@@ -79,6 +79,6 @@ export const ProductsSlider = ({ title, products }: Props) => {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-    </section>
+    </div>
   );
 };

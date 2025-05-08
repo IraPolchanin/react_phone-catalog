@@ -17,7 +17,7 @@
     "format": "prettier --write './src/**/*.{ts,tsx}'",
     "lint": "npm run style-format && npm run format && npm run lint-js && npm run lint-css",
     "update": "mate-scripts update",
-    "postinstall": "npm run update && cypress verify",
+    "postinstall": "npm run update",
     "prepare": "husky install",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist --no-history"
@@ -45,7 +45,7 @@
     "@typescript-eslint/parser": "7.18.0",
     "@vitejs/plugin-react": "^4.3.1",
     "babel-plugin-styled-components": "2.1.4",
-    "cypress": "13.17.0",
+    "cypress": "14.3.2",
     "eslint": "8.57.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "18.0.0",

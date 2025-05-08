@@ -21,10 +21,6 @@
     border-color: $color-secondary;
   }
 
-  &:active:not(:disabled) {
-    /* Активний стан */
-  }
-
   &.withText {
     gap: 8px;
   }
@@ -48,6 +44,10 @@
     height: 32px;
     border: 1px solid $color-elements;
     background: transparent;
+
+    &.fullHeight {
+      height: 100%;
+    }
   }
 
   &.backLink {

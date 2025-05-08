@@ -1,5 +1,5 @@
 .categorySection {
-  padding: 20px;
+  padding-top: 38px;
 }
 
 .title {
@@ -14,6 +14,7 @@
 
   @include on-mobile {
     flex-direction: column;
+    gap: 32px;
   }
 }
 
@@ -49,16 +50,20 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: 10em 10em;
+  object-position: 8em 8em;
   transition: transform 0.3s ease;
 
   .card:hover & {
     transform: scale(1.1);
   }
 
-   @include on-tablet {
-   object-position: 5em 5em;
-   }
+  @include on-tablet {
+    object-position: 4em 3em;
+  }
+
+  @include on-mobile {
+    object-position: 6em 5em;
+  }
 }
 
 .name {

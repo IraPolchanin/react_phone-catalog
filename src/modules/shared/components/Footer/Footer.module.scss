@@ -1,29 +1,49 @@
-@use '@/styles/abstracts/abstracts' as *;
-
 .footer {
   height: $footer-height;
+
+  @extend %container;
+
+  padding: 32px 0;
   background: $color-white;
   box-shadow: 0 -1px 0 $color-elements;
   position: relative;
   width: 100%;
-  padding: 32px 24px; // Combine padding: 32px 0 (vertical) with padding: 0 24px (horizontal)
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
 
+  @include on-tablet {
+    justify-content: unset;
+  }
+
   @include on-mobile {
     flex-direction: column;
-    gap: 16px;
     align-items: flex-start;
+    gap: 32px;
+    height: $footer-height-mobile;
   }
 }
 
 .footer__logo {
-  padding: 0 48px 0 24px;
+  margin-right: 40px;
 
   img {
     height: 32px;
+  }
+
+  @include on-tablet {
+    margin: 0 102px 0 8px;
+  }
+
+  @include on-mobile {
+    margin: 0;
+  }
+}
+
+.footer__nav {
+  @include on-tablet {
+    margin-right: 68px;
   }
 }
 

@@ -34,6 +34,7 @@ export const Icon: React.FC<IconProps> = props => {
     text = '',
     isActive = false,
     disabled = false,
+    fullHeight = false,
   } = props;
 
   const iconPath = iconPaths[icon];
@@ -49,6 +50,8 @@ export const Icon: React.FC<IconProps> = props => {
   const classNames = clsx(styles.icon, className, {
     [styles.favorite]: variant === 'favorite',
     [styles.sliderControl]: variant === 'slider-control',
+    [styles.fullHeight]: variant === 'slider-control' && fullHeight,
+    [styles.fullHeight]: variant === 'slider-control' && fullHeight,
     [styles.backLink]: variant === 'backLink',
     [styles.backToTop]: variant === 'back_to_top',
     [styles.link]: props.as === 'link',

@@ -4,6 +4,15 @@
   padding: 32px;
   border: 1px solid $color-elements;
   transition: $transition;
+  height: 506px;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-mobile {
+    height: 439px;
+  }
 
   &:hover {
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
@@ -13,12 +22,26 @@
 .imageContainer {
   height: 196px;
   width: 208px;
+  min-height: 196px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   transition: $transition;
   overflow: hidden;
+
+  @include on-tablet {
+    height: 202px;
+    width: 173px;
+    min-height: 202px;
+  }
+
+  @include on-mobile {
+    width: 148px;
+    height: 129px;
+    min-height: 129px;
+    margin-bottom: 20px;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -42,14 +65,24 @@
 
   @extend %body-text;
 
-  margin-bottom: 8px;
+  margin-bottom: 30px;
   text-decoration: none;
+
+  @include on-tablet {
+    margin-bottom: 8px;
+  }
+
+  @include on-mobile {
+    margin-bottom: 12px;
+  }
 }
 
 .priceContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $color-elements;
+  margin-bottom: 18px;
 }
 
 .price {
@@ -63,9 +96,12 @@
 }
 
 .specs {
-  margin-bottom: 8px;
-  padding-top: 8px;
-  border-top: 1px solid $color-elements;
+  margin-bottom: 16px;
+
+  // border-top: 1px solid $color-elements;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .specRow {
@@ -73,11 +109,6 @@
 
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 
 .specName {
